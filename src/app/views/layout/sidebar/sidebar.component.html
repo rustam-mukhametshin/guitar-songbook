@@ -1,0 +1,26 @@
+<ion-list id="inbox-list">
+  <ion-list-header>Guitar Songbook</ion-list-header>
+  <ion-note></ion-note>
+
+  <ion-menu-toggle *ngFor="let p of appPages; let i = index" auto-hide="false">
+    <ion-item [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root"
+              routerLinkActive="selected">
+      <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" slot="start"></ion-icon>
+      <ion-label>{{ p.title }}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+</ion-list>
+
+<ion-list id="labels-list">
+  <!--<ion-list-header>Labels</ion-list-header>-->
+
+  <ion-menu-toggle *ngFor="let p of labels; let i = index" auto-hide="false">
+    <ion-item [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root"
+              routerLinkActive="selected">
+      <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-sharp'" slot="start"></ion-icon>
+      <ion-label>{{ p.title }}</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+
+</ion-list>
+
