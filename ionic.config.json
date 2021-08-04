@@ -1,0 +1,7 @@
+{
+  "name": "guitar-songbook",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
