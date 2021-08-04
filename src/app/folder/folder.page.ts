@@ -9,7 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 export class FolderPage implements OnInit {
   public folder: string;
 
-  constructor(private activatedRoute: ActivatedRoute) { }
+  labels = [
+    {title: 'Search', url: '/folder/Inbox', icon: 'search'},
+    {title: 'Reload', url: '/folder/Favorites', icon: 'reload'},
+    {title: 'Submenu', url: '/folder/Favorites', icon: 'ellipsis-vertical'},
+  ];
+
+  constructor(private activatedRoute: ActivatedRoute) {
+  }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
