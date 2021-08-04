@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
+  appPages = [
     { title: 'Songs list', url: '/folder/Inbox', icon: 'list' },
     { title: 'Favorites', url: '/folder/Favorites', icon: 'heart' },
     { title: 'My songs', url: '/folder/Favorites', icon: 'archive' },
@@ -13,6 +13,10 @@ export class AppComponent {
     { title: 'History / Top', url: '/folder/Trash', icon: 'refresh' },
     { title: 'Chords', url: '/folder/Spam', icon: 'musical-notes' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  labels = [
+    { title: 'Settings', url: '/folder/Inbox', icon: 'help' },
+    { title: 'F.A.Q.', url: '/folder/Favorites', icon: 'settings' },
+  ];
+
   constructor() {}
 }
