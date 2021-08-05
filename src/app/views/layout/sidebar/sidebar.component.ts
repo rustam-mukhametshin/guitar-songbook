@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   appPages = [
-    {title: 'Songs list', url: '/folder/Inbox', icon: 'list'},
+    {title: 'Songs list', url: '/', icon: 'list'},
     {title: 'Favorites', url: '/folder/Favorites', icon: 'heart'},
     {title: 'My songs', url: '/folder/Favorites', icon: 'archive'},
     {title: 'Setlists', url: '/folder/Archived', icon: 'caret-forward'},
