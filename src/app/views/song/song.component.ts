@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArtistsService, Post } from '../../services/artists.service';
+import { ArtistsService } from '../../services/artists.service';
 import { Observable } from 'rxjs';
+import { Song } from '../../interfaces/Song';
 
 @Component({
   selector: 'app-song',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class SongComponent implements OnInit {
 
-  song$: Observable<Post>;
+  song$: Observable<Song>;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
