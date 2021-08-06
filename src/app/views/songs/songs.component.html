@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ 'folder' }}</ion-title>
+
+    <!--<ion-buttons slot="secondary">
+      <ion-button *ngFor="let p of labels" fill="clear">
+        <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- List of Text Items -->
+  <ion-list *ngIf="songs$ | async as songs">
+    <ion-item *ngFor="let s of songs">
+      <ion-label [routerLink]="['/song', s.id]">{{s.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
