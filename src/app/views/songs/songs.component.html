@@ -4,12 +4,19 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>{{ 'folder' }}</ion-title>
-
-    <!--<ion-buttons slot="secondary">
-      <ion-button *ngFor="let p of labels" fill="clear">
-        <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
+    <ion-buttons slot="secondary">
+      <ion-button fill="clear">
+        <ion-icon
+          [ios]="'search-outline'"
+          [md]="'search-outline'"
+        ></ion-icon>
       </ion-button>
-    </ion-buttons>-->
+      <ion-button fill="clear">
+        <ion-icon
+          [ios]="'ellipsis-vertical-outline'"
+          [md]="'ellipsis-vertical-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
