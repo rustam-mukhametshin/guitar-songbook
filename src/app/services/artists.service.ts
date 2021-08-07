@@ -22,7 +22,7 @@ export class ArtistsService {
   }
 
   getArtist(id: number | string): Observable<Artist> {
-    return this.httpClient.get<Artist>(this.apiUrl + '/posts/' + id);
+    return this.httpClient.get<Artist>(this.apiUrl + '/users/' + id);
   }
 
   getPostsByUserId(userId: number | string): Observable<Song[]> {
