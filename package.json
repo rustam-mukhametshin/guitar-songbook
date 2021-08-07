@@ -19,7 +19,8 @@
     "sync:io": "ionic cap sync",
     "deploy:ios-local": "ionic cap open ios",
     "deploy:android-local": "ionic cap open android",
-    "set:hooks": "npx simple-git-hooks"
+    "set:hooks": "npx simple-git-hooks",
+    "postinstall": "npm run set:hooks"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run lint"
