@@ -24,7 +24,12 @@ export class SongComponent implements OnInit {
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
 
-    this.song$ = this.artistsService.getSong(id);
+    this.song$ = this.getFromFetch().pipe(
+      switchMap(val =>
+        (this.artistsService.getSong(id)
+          .pipe(map(value => ({...value, ...{body: val}} as Song))))
+      )
+    );
   }
 
   getFromFetch() {
