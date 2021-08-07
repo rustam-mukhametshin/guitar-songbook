@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ArtistsService } from '../../services/artists.service';
 import { Observable } from 'rxjs';
 import { Song } from '../../interfaces/Song';
+import { map, switchMap } from 'rxjs/operators';
+import { fromFetch } from 'rxjs/fetch';
 
 @Component({
   selector: 'app-song',
@@ -25,4 +27,9 @@ export class SongComponent implements OnInit {
     this.song$ = this.artistsService.getSong(id);
   }
 
+  getFromFetch() {
+    return fromFetch('./assets/placeholder.txt', {
+      selector: response => response.text()
+    });
+  }
 }
