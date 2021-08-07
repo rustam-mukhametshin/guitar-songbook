@@ -36,6 +36,10 @@
   </ion-toolbar>
 </ion-header>
 
-<pre *ngIf="song$ | async as song">
-  {{song | json}}
-</pre>
+<ion-content [fullscreen]="true">
+  <ion-card style="--color: black;">
+    <ion-card-content *ngIf="song$ | async as song">
+      <pre>{{song.body}}</pre>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
