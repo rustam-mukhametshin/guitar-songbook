@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Artist } from '../interfaces/Artist';
 import { Song } from '../interfaces/Song';
@@ -22,7 +22,11 @@ export class ArtistsService {
   }
 
   getArtist(id: number | string): Observable<Artist> {
-    return this.httpClient.get<Artist>(this.apiUrl + '/users/' + id);
+    return this.httpClient.get<Artist>(this.apiUrl + '/users/' + id)
+      .pipe(
+        shareReplay()
+      )
+      ;
   }
 
   getPostsByUserId(userId: number | string): Observable<Song[]> {
