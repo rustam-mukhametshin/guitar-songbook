@@ -46,8 +46,8 @@
 <ion-content [fullscreen]="true">
 
   <!-- List of Text Items -->
-  <ion-list *ngIf="songs$ | async as songs">
-    <ion-item *ngFor="let s of songs">
+  <ion-list *ngIf="(songs$ | async) as songs ">
+    <ion-item *ngFor="let s of songs | search : searchText">
       <ion-label [routerLink]="['/song', s.id]">{{s.title}}</ion-label>
     </ion-item>
   </ion-list>
