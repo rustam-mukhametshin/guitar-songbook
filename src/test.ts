@@ -2,14 +2,12 @@
 
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
-import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
 declare const require: {
   context(path: string, deep?: boolean, filter?: RegExp): {
     keys(): string[];
+    // eslint-disable-next-line @typescript-eslint/member-ordering
     <T>(id: string): T;
   };
 };
