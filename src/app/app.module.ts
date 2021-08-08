@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SongsComponent } from './views/songs/songs.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { NotFoundPageComponent } from './views/not-found-page/not-found-page.com
     SongsComponent,
     SongComponent,
     NotFoundPageComponent,
+    SearchPipe,
   ],
   entryComponents: [],
   imports: [
