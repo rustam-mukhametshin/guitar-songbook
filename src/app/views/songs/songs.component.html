@@ -20,7 +20,11 @@
 
     <!-- Nav buttons -->
     <ion-buttons slot="secondary">
-      <ion-button fill="clear">
+
+      <ion-button
+        (click)="showSearch = true;"
+        *ngIf="!showSearch"
+        fill="clear">
         <ion-icon
           [ios]="'search-outline'"
           [md]="'search-outline'"
