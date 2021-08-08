@@ -4,7 +4,8 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title *ngIf="artist$ | async as artist">{{artist.name}}</ion-title>
+
+    <ion-title *ngIf="!showSearch && artist$ | async as artist">{{artist.name}}</ion-title>
 
     <!-- Search -->
     <ion-toolbar *ngIf="showSearch">
