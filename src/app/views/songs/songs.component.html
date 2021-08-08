@@ -1,9 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Menu -->
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title *ngIf="artist$ | async as artist">{{artist.name}}</ion-title>
+
+    <!-- Search -->
+    <ion-toolbar *ngIf="showSearch">
+      <ion-searchbar
+        (ionCancel)="showSearch = false"
+        (ionChange)="searchText = $event.detail.value"
+        animated="true"
+        cancelButtonIcon="chevron-back-outline"
+        debounce="200"
+        show-cancel-button="true"
+      ></ion-searchbar>
+    </ion-toolbar>
+
+    <!-- Nav buttons -->
     <ion-buttons slot="secondary">
       <ion-button fill="clear">
         <ion-icon
@@ -11,12 +26,15 @@
           [md]="'search-outline'"
         ></ion-icon>
       </ion-button>
+
       <ion-button fill="clear">
         <ion-icon
           [ios]="'ellipsis-vertical-outline'"
           [md]="'ellipsis-vertical-outline'"></ion-icon>
       </ion-button>
+
     </ion-buttons>
+
   </ion-toolbar>
 </ion-header>
 
