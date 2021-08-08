@@ -15,6 +15,10 @@ export class SongsComponent implements OnInit {
   songs$: Observable<Song[]>;
   artist$: Observable<Artist>;
 
+  // Search
+  showSearch = false;
+  searchText: string;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly artistsService: ArtistsService
