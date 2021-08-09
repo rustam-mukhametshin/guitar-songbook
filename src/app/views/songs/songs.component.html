@@ -51,6 +51,7 @@
 
       <ion-button
         *ngIf="!s.favourite"
+        (click)="addToFavourite(s.id)"
         fill="clear"
       >
         <ion-icon
@@ -59,6 +60,7 @@
       </ion-button>
       <ion-button
         *ngIf="s.favourite"
+        (click)="removeFromFavourite(s.id)"
         fill="clear"
       >
         <ion-icon

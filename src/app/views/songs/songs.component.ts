@@ -31,4 +31,12 @@ export class SongsComponent implements OnInit {
     this.artist$ = this.artistsService.getArtist(artistId);
   }
 
+  addToFavourite(id: number | string) {
+
+  }
+
+  removeFromFavourite(id: number | string) {
+
+  }
+
 }
