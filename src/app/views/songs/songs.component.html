@@ -48,6 +48,24 @@
   <!-- List of Text Items -->
   <ion-list *ngIf="(songs$ | async) as songs ">
     <ion-item *ngFor="let s of songs | search : searchText">
+
+      <ion-button
+        *ngIf="!s.favourite"
+        fill="clear"
+      >
+        <ion-icon
+          [ios]="'star-outline'"
+          [md]="'star-outline'"></ion-icon>
+      </ion-button>
+      <ion-button
+        *ngIf="s.favourite"
+        fill="clear"
+      >
+        <ion-icon
+          [ios]="'star'"
+          [md]="'star'"></ion-icon>
+      </ion-button>
+
       <ion-label [routerLink]="['/song', s.id]">{{s.title}}</ion-label>
     </ion-item>
   </ion-list>
