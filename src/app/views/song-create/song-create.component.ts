@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-song-create',
@@ -9,6 +10,23 @@ import { ActivatedRoute } from '@angular/router';
 export class SongCreateComponent implements OnInit {
 
   artistId: string | number;
+
+  // Song form
+  songForm = new FormGroup({
+    name: new FormControl('', [
+      Validators.required,
+    ]),
+    initialPause: new FormControl('', [
+      Validators.pattern('[0-9]*'),
+      Validators.required,
+    ]),
+    duration: new FormControl('', [
+      Validators.pattern('[0-9]*'),
+      Validators.required,
+    ]),
+    chordNames: new FormControl('', []),
+    commentsChords: new FormControl('', [])
+  });
 
   constructor(
     private readonly activatedRoute: ActivatedRoute
