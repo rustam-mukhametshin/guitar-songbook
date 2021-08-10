@@ -2,7 +2,10 @@
   <ion-toolbar>
     <!-- Menu -->
     <ion-buttons slot="start">
-      <ion-button fill="clear">
+      <ion-button
+        [routerLink]="['/songs', artistId]"
+        fill="clear
+">
         <ion-icon
           [ios]="'arrow-back'"
           [md]="'arrow-back'"></ion-icon>
