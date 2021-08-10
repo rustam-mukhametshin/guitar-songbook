@@ -11,8 +11,18 @@ const routes: Routes = [
     component: ArtistsComponent,
   },
   {
-    path: 'songs/:artistId',
-    component: SongsComponent,
+    path: 'songs',
+    children: [
+      {
+        path: ':artistId',
+        component: SongsComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: ':artistId'
+      }
+    ]
   },
   {
     path: 'song/:id',
