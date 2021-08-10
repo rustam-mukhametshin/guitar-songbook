@@ -14,17 +14,27 @@ import { SongsComponent } from './views/songs/songs.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { SongFormComponent } from './views/song-form/song-form.component';
+
+const components = [
+  SidebarComponent,
+  NavComponent,
+  ArtistsComponent,
+  SongsComponent,
+  SongComponent,
+  NotFoundPageComponent,
+  SongFormComponent,
+];
+
+const pipes = [
+  SearchPipe,
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    SidebarComponent,
-    NavComponent,
-    ArtistsComponent,
-    SongsComponent,
-    SongComponent,
-    NotFoundPageComponent,
-    SearchPipe,
+    ...components,
+    ...pipes,
   ],
   entryComponents: [],
   imports: [
