@@ -26,3 +26,67 @@
 
   </ion-toolbar>
 </ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="--color: black;">
+    <ion-card-content>
+
+      <form [formGroup]="songForm">
+
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            clearInput
+            formControlName="name"
+            type="text"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Initial pause</ion-label>
+          <ion-input
+            clearInput
+            formControlName="initialPause"
+            type="number"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Duration</ion-label>
+          <ion-input
+            clearInput
+            formControlName="duration"
+            type="number"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Chord names</ion-label>
+          <ion-select formControlName="chordNames" placeholder="Select One">
+            <ion-select-option
+              *ngFor="let chord of chordNames"
+              [value]="chord[0]"
+            >{{chord[1]}}</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-button color="tertiary">
+          <ion-icon [ios]="'filter'" [md]="'filter'" slot="start"></ion-icon>
+          Lyrics
+        </ion-button>
+
+        <ion-item>
+          <ion-label position="stacked">Comments to chords</ion-label>
+          <ion-input
+            clearInput
+            formControlName="commentsChords"
+            type="text"
+          ></ion-input>
+        </ion-item>
+
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
