@@ -4,6 +4,7 @@ import { ArtistsComponent } from './views/artists/artists.component';
 import { SongsComponent } from './views/songs/songs.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
+import { SongCreateComponent } from './views/song-create/song-create.component';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: ':artistId',
         component: SongsComponent,
+      },
+      {
+        path: 'create/:artistId',
+        component: SongCreateComponent,
       },
       {
         path: '',
