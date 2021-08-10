@@ -15,6 +15,8 @@ import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 import { SearchPipe } from './pipes/search.pipe';
 import { SongFormComponent } from './views/song-form/song-form.component';
+import { SongCreateComponent } from './views/song-create/song-create.component';
+import { SongUpdateComponent } from './views/song-update/song-update.component';
 
 const components = [
   SidebarComponent,
@@ -24,6 +26,8 @@ const components = [
   SongComponent,
   NotFoundPageComponent,
   SongFormComponent,
+  SongCreateComponent,
+  SongUpdateComponent,
 ];
 
 const pipes = [
