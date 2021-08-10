@@ -32,6 +32,16 @@
         ></ion-icon>
       </ion-button>
 
+      <ion-button
+        *ngIf="!showSearch && artist$ | async as artist"
+        [routerLink]="['/songs/create', artist.id]"
+        fill="clear">
+        <ion-icon
+          [ios]="'add-outline'"
+          [md]="'add-outline'"
+        ></ion-icon>
+      </ion-button>
+
       <ion-button fill="clear">
         <ion-icon
           [ios]="'ellipsis-vertical-outline'"
