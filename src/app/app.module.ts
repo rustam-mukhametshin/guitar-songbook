@@ -17,6 +17,7 @@ import { SearchPipe } from './pipes/search.pipe';
 import { SongFormComponent } from './views/song-form/song-form.component';
 import { SongCreateComponent } from './views/song-create/song-create.component';
 import { SongUpdateComponent } from './views/song-update/song-update.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const components = [
   SidebarComponent,
@@ -45,7 +46,8 @@ const pipes = [
     BrowserModule,
     IonicModule.forRoot(),
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],
