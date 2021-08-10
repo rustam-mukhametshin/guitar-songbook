@@ -13,24 +13,10 @@ export class SongCreateComponent implements OnInit {
   artistId: string | number;
 
   // Song form
-  songForm = new FormGroup({
-    name: new FormControl('', [
-      Validators.required,
-    ]),
-    initialPause: new FormControl('', [
-      Validators.pattern('[0-9]*'),
-      Validators.required,
-    ]),
-    duration: new FormControl('', [
-      Validators.pattern('[0-9]*'),
-      Validators.required,
-    ]),
-    chordNames: new FormControl('', []),
-    commentsChords: new FormControl('', [])
-  });
+  songForm: FormGroup;
 
   // List of chords
-  chordNames = Object.entries(ChordNames);
+  chordNames: any;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute
@@ -39,9 +25,37 @@ export class SongCreateComponent implements OnInit {
   }
 
   ngOnInit() {
+    // Set song form
+    this.songForm = this.setForm();
+
+    // Set list of chords
+    this.chordNames = Object.entries(ChordNames);
   }
 
   save() {
     console.log(this.songForm.value);
+  }
+
+  /**
+   * Set form
+   *
+   * @private
+   */
+  private setForm(): FormGroup {
+    return new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+      ]),
+      initialPause: new FormControl('', [
+        Validators.pattern('[0-9]*'),
+        Validators.required,
+      ]),
+      duration: new FormControl('', [
+        Validators.pattern('[0-9]*'),
+        Validators.required,
+      ]),
+      chordNames: new FormControl('', []),
+      commentsChords: new FormControl('', [])
+    });
   }
 }
