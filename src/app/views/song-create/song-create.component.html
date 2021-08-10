@@ -14,7 +14,9 @@
 
     <!-- Nav buttons -->
     <ion-buttons slot="secondary">
-      <ion-button fill="clear">
+      <ion-button
+        (click)="save()"
+        fill="clear">
         <ion-icon
           [ios]="'save'"
           [md]="'save'"></ion-icon>

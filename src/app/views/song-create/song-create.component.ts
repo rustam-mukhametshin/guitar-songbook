@@ -41,4 +41,7 @@ export class SongCreateComponent implements OnInit {
   ngOnInit() {
   }
 
+  save() {
+    console.log(this.songForm.value);
+  }
 }
