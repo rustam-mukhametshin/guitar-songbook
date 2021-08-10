@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ChordNames } from '../../enums/ChordNames';
 
 @Component({
   selector: 'app-song-create',
@@ -27,6 +28,9 @@ export class SongCreateComponent implements OnInit {
     chordNames: new FormControl('', []),
     commentsChords: new FormControl('', [])
   });
+
+  // List of chords
+  chordNames = Object.entries(ChordNames);
 
   constructor(
     private readonly activatedRoute: ActivatedRoute
