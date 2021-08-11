@@ -8,9 +8,6 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +17,7 @@ import { ArtistsComponent } from './views/artists/artists.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 import { SharedModule } from './modules/shared.module';
+import { CoreModule } from './modules/core.module';
 
 const components = [
   SidebarComponent,
@@ -38,10 +36,10 @@ const components = [
   entryComponents: [],
   imports: [
     BrowserModule,
+    CoreModule,
     AppRoutingModule,
     SharedModule,
   ],
-  providers: [{provide: RouteReuseStrategy, useClass: IonicRouteStrategy}],
   bootstrap: [AppComponent],
 })
 export class AppModule {
