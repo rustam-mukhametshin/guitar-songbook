@@ -9,7 +9,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { SongCreateComponent } from '../song-create/song-create.component';
+import { SongCreateComponent } from './song-create/song-create.component';
 import { SongsComponent } from './songs/songs.component';
 
 const routes: Routes = [
