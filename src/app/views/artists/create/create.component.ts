@@ -7,6 +7,7 @@
  */
 
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -14,11 +15,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
+  // Song form
+  form: FormGroup;
 
   constructor() {
   }
 
   ngOnInit() {
+    // Set song form
+    this.form = this.setForm();
   }
 
+  /**
+   * Save artist
+   *
+   * Todo
+   */
+  save() {
+
+  }
+
+  /**
+   * Set form
+   *
+   * @private
+   */
+  private setForm(): FormGroup {
+    return new FormGroup({
+      name: new FormControl('', [
+        Validators.required,
+      ]),
+    });
+  }
 }

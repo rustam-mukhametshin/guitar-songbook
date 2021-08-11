@@ -6,6 +6,52 @@
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
 
-<p>
-  create works!
-</p>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- Menu -->
+    <ion-buttons slot="start">
+      <ion-button
+        [routerLink]="['/artists']"
+        fill="clear
+">
+        <ion-icon
+          [ios]="'arrow-back'"
+          [md]="'arrow-back'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <!-- Nav buttons -->
+    <ion-buttons slot="secondary">
+      <ion-button
+        (click)="save()"
+        fill="clear">
+        <ion-icon
+          [ios]="'save'"
+          [md]="'save'"></ion-icon>
+      </ion-button>
+
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card style="--color: black;">
+    <ion-card-content>
+
+      <form [formGroup]="form">
+
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input
+            clearInput
+            formControlName="name"
+            type="text"
+          ></ion-input>
+        </ion-item>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
