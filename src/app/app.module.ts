@@ -1,3 +1,11 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -13,7 +21,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SongsComponent } from './views/songs/songs.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
-import { SearchPipe } from './pipes/search.pipe';
 import { SongFormComponent } from './views/song-form/song-form.component';
 import { SongCreateComponent } from './views/song-create/song-create.component';
 import { SongUpdateComponent } from './views/song-update/song-update.component';
@@ -31,15 +38,11 @@ const components = [
   SongUpdateComponent,
 ];
 
-const pipes = [
-  SearchPipe,
-];
 
 @NgModule({
   declarations: [
     AppComponent,
     ...components,
-    ...pipes,
   ],
   entryComponents: [],
   imports: [

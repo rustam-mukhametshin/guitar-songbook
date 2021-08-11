@@ -8,14 +8,26 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SearchPipe } from '../pipes/search.pipe';
+
+const pipes = [
+  SearchPipe,
+];
+
+const modules = [
+  CommonModule,
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...pipes,
+  ],
   imports: [
-    CommonModule
+    ...modules,
   ],
   exports: [
-    CommonModule
+    ...modules,
+    ...pipes,
   ]
 })
 export class SharedModule {
