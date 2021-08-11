@@ -8,14 +8,13 @@
 
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { ArtistsComponent } from './views/artists/artists/artists.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
     path: 'artists',
-    component: ArtistsComponent,
+    loadChildren: () => import('./views/artists/artist.module').then(m => m.ArtistModule)
   },
   {
     path: 'songs',

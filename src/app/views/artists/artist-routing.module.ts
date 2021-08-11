@@ -8,8 +8,20 @@
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ArtistsComponent } from './artists/artists.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        component: ArtistsComponent,
+      }
+    ]
+  }
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
