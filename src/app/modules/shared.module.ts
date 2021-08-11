@@ -9,6 +9,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchPipe } from '../pipes/search.pipe';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
 const pipes = [
   SearchPipe,
@@ -16,6 +19,8 @@ const pipes = [
 
 const modules = [
   CommonModule,
+  HttpClientModule,
+  ReactiveFormsModule,
 ];
 
 @NgModule({
@@ -24,10 +29,12 @@ const modules = [
   ],
   imports: [
     ...modules,
+    IonicModule.forRoot(),
   ],
   exports: [
     ...modules,
     ...pipes,
+    IonicModule,
   ]
 })
 export class SharedModule {
