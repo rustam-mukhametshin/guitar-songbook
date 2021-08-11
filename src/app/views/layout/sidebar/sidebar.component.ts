@@ -1,3 +1,11 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,7 +16,6 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   appPages = [
-    {title: 'Songs list', url: '/', icon: 'list'},
     {title: 'Favorites', url: '/folder/Favorites', icon: 'heart'},
     {title: 'My songs', url: '/folder/Favorites', icon: 'archive'},
     {title: 'Setlists', url: '/folder/Archived', icon: 'caret-forward'},

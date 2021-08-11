@@ -1,6 +1,29 @@
+<!--
+  ~ Guitar songbook project
+  ~
+  ~ @author Rustam Mukhametshin <https://github.com/iproman>
+  ~ @link https://github.com/iproman
+  ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+  -->
+
 <ion-list id="inbox-list">
   <ion-list-header>Guitar Songbook</ion-list-header>
   <ion-note></ion-note>
+
+  <ion-menu-toggle auto-hide="false">
+    <ion-item
+      [routerLink]="['/']"
+      detail="false"
+      lines="none"
+      routerDirection="root"
+      routerLinkActive="selected">
+      <ion-icon
+        [ios]="'list-outline'"
+        [md]="'list-sharp'"
+        slot="start"></ion-icon>
+      <ion-label>Songs list</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
 
   <ion-menu-toggle *ngFor="let p of appPages; let i = index" auto-hide="false">
     <ion-item [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root"
