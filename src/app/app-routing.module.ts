@@ -10,6 +10,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
+import { ArtistsComponent } from './views/artists/artists/artists.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,14 @@ const routes: Routes = [
   {
     path: 'songs',
     loadChildren: () => import('./views/songs/songs.module').then(m => m.SongsModule)
+  },
+  {
+    path: 'favourites',
+    component: ArtistsComponent,
+  },
+  {
+    path: 'customs',
+    component: ArtistsComponent,
   },
   {
     path: 'song/:id',
