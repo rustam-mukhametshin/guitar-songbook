@@ -9,7 +9,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+import { SongCreateComponent } from '../song-create/song-create.component';
+import { SongsComponent } from './songs/songs.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: ':artistId',
+        component: SongsComponent,
+      },
+      {
+        path: 'create/:artistId',
+        component: SongCreateComponent,
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: ':artistId'
+      }
+    ]
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
