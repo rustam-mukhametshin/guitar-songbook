@@ -10,10 +10,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ArtistRoutingModule } from './artist-routing.module';
+import { CreateComponent } from './create/create.component';
 
+const components = [
+  CreateComponent,
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...components,
+  ],
   imports: [
     CommonModule,
     ArtistRoutingModule
