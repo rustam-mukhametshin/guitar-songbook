@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChordNames } from '../../enums/ChordNames';
+import { SongService } from '../../services/song.service';
 
 @Component({
   selector: 'app-song-create',
@@ -19,7 +20,8 @@ export class SongCreateComponent implements OnInit {
   chordNames: any;
 
   constructor(
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly songService: SongService
   ) {
     this.artistId = this.activatedRoute.snapshot.paramMap.get('artistId');
   }
@@ -32,8 +34,15 @@ export class SongCreateComponent implements OnInit {
     this.chordNames = Object.entries(ChordNames);
   }
 
+  /**
+   * Save custom song
+   */
   save() {
-    console.log(this.songForm.value);
+    if (typeof this.artistId === 'string') {
+      this.artistId = parseInt(this.artistId, 10);
+    }
+
+    this.songService.addNewCustomSong(this.songForm.value, this.artistId);
   }
 
   /**
