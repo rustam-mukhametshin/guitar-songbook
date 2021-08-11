@@ -7,10 +7,10 @@
  */
 
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { ArtistRoutingModule } from './artist-routing.module';
 import { CreateComponent } from './create/create.component';
+import { SharedModule } from '../../modules/shared.module';
 
 const components = [
   CreateComponent,
@@ -21,7 +21,7 @@ const components = [
     ...components,
   ],
   imports: [
-    CommonModule,
+    SharedModule,
     ArtistRoutingModule
   ]
 })
