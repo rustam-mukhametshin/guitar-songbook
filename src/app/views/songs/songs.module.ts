@@ -11,10 +11,16 @@ import { CommonModule } from '@angular/common';
 
 import { SongsRoutingModule } from './songs-routing.module';
 import { SharedModule } from '../../modules/shared.module';
+import { SongsComponent } from './songs/songs.component';
 
+const components = [
+  SongsComponent,
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...components,
+  ],
   imports: [
     CommonModule,
     SongsRoutingModule,

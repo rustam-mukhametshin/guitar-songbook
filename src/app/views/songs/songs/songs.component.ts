@@ -1,9 +1,18 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ArtistsService } from '../../services/artists.service';
+import { ArtistsService } from '../../../services/artists.service';
 import { ActivatedRoute } from '@angular/router';
-import { Song } from '../../interfaces/Song';
-import { Artist } from '../../interfaces/Artist';
+import { Song } from '../../../interfaces/Song';
+import { Artist } from '../../../interfaces/Artist';
+
 
 @Component({
   selector: 'app-songs',
