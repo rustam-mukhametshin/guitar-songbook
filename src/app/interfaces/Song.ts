@@ -6,5 +6,6 @@ export interface Song {
   initialPause: number;
   duration: number;
   comments: string;
-  favourite: boolean;
+  isFavourite: boolean;
+  isCustom: boolean;
 }
