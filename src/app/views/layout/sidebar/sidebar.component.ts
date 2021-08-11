@@ -16,8 +16,6 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   appPages = [
-    {title: 'Favorites', url: '/folder/Favorites', icon: 'heart'},
-    {title: 'My songs', url: '/folder/Favorites', icon: 'archive'},
     {title: 'Setlists', url: '/folder/Archived', icon: 'caret-forward'},
     {title: 'History / Top', url: '/folder/Trash', icon: 'refresh'},
     {title: 'Chords', url: '/folder/Spam', icon: 'musical-notes'},

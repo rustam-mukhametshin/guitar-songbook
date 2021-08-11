@@ -25,6 +25,36 @@
     </ion-item>
   </ion-menu-toggle>
 
+  <ion-menu-toggle auto-hide="false">
+    <ion-item
+      [queryParams]="{type: 'favourite'}" [routerLink]="['/favourites']"
+      detail="false"
+      lines="none"
+      routerDirection="root"
+      routerLinkActive="selected">
+      <ion-icon
+        [ios]="'heart-outline'"
+        [md]="'heart-sharp'"
+        slot="start"></ion-icon>
+      <ion-label>Favorites</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+
+  <ion-menu-toggle auto-hide="false">
+    <ion-item
+      [queryParams]="{type: 'custom'}" [routerLink]="['/customs']"
+      detail="false"
+      lines="none"
+      routerDirection="root"
+      routerLinkActive="selected">
+      <ion-icon
+        [ios]="'archive-outline'"
+        [md]="'archive-sharp'"
+        slot="start"></ion-icon>
+      <ion-label>My songs</ion-label>
+    </ion-item>
+  </ion-menu-toggle>
+
   <ion-menu-toggle *ngFor="let p of appPages; let i = index" auto-hide="false">
     <ion-item [routerLink]="[p.url]" detail="false" lines="none" routerDirection="root"
               routerLinkActive="selected">
