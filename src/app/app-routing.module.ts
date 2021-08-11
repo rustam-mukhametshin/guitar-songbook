@@ -1,3 +1,11 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ArtistsComponent } from './views/artists/artists.component';
@@ -28,6 +36,10 @@ const routes: Routes = [
         redirectTo: ':artistId'
       }
     ]
+  },
+  {
+    path: 'songs',
+    loadChildren: () => import('./views/songs/songs.module').then(m => m.SongsModule)
   },
   {
     path: 'song/:id',
