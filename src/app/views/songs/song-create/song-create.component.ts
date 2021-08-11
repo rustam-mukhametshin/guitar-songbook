@@ -9,8 +9,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChordNames } from '../../enums/ChordNames';
-import { SongService } from '../../services/song.service';
+import { ChordNames } from '../../../enums/ChordNames';
+import { SongService } from '../../../services/song.service';
 
 @Component({
   selector: 'app-song-create',
