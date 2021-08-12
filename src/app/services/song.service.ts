@@ -11,6 +11,10 @@ import { Song } from '../interfaces/Song';
 import { v4 as uid } from 'uuid';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { SongStorageService } from './storages/song-storage.service';
+import { ArtistStorageService } from './storages/artist-storage.service';
+import { Artist } from '../interfaces/Artist';
+import { ArtistsService } from './artists.service';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +27,9 @@ export class SongService {
   readonly songs$: Observable<Song[]> = this.songSubj$.asObservable();
 
   constructor(
-    private readonly songStorageService: SongStorageService
+    private readonly songStorageService: SongStorageService,
+    private readonly artistStorageService: ArtistStorageService,
+    private readonly artistsService: ArtistsService
   ) {
   }
 
@@ -48,6 +54,18 @@ export class SongService {
     };
 
     this.songsCustom.unshift(song);
+
+    const artist: Artist = this.artistStorageService.getArtist(artistId);
+
+    if (!artist) {
+      this.artistsService.getArtist(artistId)
+        .pipe(
+          take(1)
+        )
+        .subscribe(a => {
+          this.artistStorageService.setArtist(a);
+        });
+    }
 
     this.songStorageService.set(this.songsCustom);
   }
