@@ -7,6 +7,7 @@
  */
 
 import { Injectable } from '@angular/core';
+import { GetResult, Storage } from '@capacitor/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -14,5 +15,27 @@ import { Injectable } from '@angular/core';
 export class StorageService {
 
   constructor() {
+  }
+
+  /**
+   * Get data from storage
+   *
+   * @param key
+   */
+  get(key: string): Promise<GetResult> {
+    return Storage.get({key});
+  }
+
+  /**
+   * Set data to storage
+   *
+   * @param key
+   * @param value
+   */
+  set(key: string, value: string): Promise<void> {
+    return Storage.set({
+      key,
+      value
+    });
   }
 }
