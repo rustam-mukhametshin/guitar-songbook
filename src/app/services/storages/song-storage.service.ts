@@ -20,7 +20,7 @@ export class SongStorageService {
   private readonly storageName = 'songs:custom';
 
   constructor(
-    private readonly storageService: StorageService
+    private readonly storageService: StorageService,
   ) {
   }
 
@@ -32,10 +32,12 @@ export class SongStorageService {
       );
   }
 
+  /**
+   * Save song
+   *
+   * @param songs
+   */
   set(songs: Song[]) {
-    // Todo: Check artist in storage
-
-    // Save song
     this.storageService.set(this.storageName, JSON.stringify(songs));
   }
 }
