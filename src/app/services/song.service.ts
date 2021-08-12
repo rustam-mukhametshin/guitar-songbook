@@ -8,10 +8,8 @@
 
 import { Injectable } from '@angular/core';
 import { Song } from '../interfaces/Song';
-import { Storage } from '@capacitor/storage';
 import { v4 as uid } from 'uuid';
-import { BehaviorSubject, first, from, Observable, Subject } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { SongStorageService } from './storages/song-storage.service';
 
 @Injectable({
@@ -59,16 +57,9 @@ export class SongService {
   /**
    * Load saved songs
    *
-   * 1. Load songs from Storage
-   * 2. Parse them from JSON string
-   * 3. Add to Subject
    */
   loadSavedSongs(): void {
-    from(Storage.get({key: this.songsStorage}))
-      .pipe(
-        first(),
-        map(value => (JSON.parse(value.value) || []) as Song[])
-      )
+    this.songStorageService.get()
       .subscribe((songs) => this.songSubj$.next(songs));
   }
 }
