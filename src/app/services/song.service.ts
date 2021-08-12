@@ -1,9 +1,18 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { Injectable } from '@angular/core';
 import { Song } from '../interfaces/Song';
 import { Storage } from '@capacitor/storage';
 import { v4 as uid } from 'uuid';
 import { BehaviorSubject, first, from, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { SongStorageService } from './storages/song-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +26,9 @@ export class SongService {
 
   private readonly songsStorage = 'songs:custom';
 
-  constructor() {
+  constructor(
+    private readonly songStorageService: SongStorageService
+  ) {
   }
 
   /**
@@ -42,7 +53,7 @@ export class SongService {
 
     this.songsCustom.unshift(song);
 
-    this.saveSongs();
+    this.songStorageService.set(this.songsCustom);
   }
 
   /**
@@ -59,19 +70,5 @@ export class SongService {
         map(value => (JSON.parse(value.value) || []) as Song[])
       )
       .subscribe((songs) => this.songSubj$.next(songs));
-  }
-
-  /**
-   * Save songs to Storage
-   *
-   * Todo: Add event to subscribe
-   *
-   * @private
-   */
-  private saveSongs(): void {
-    Storage.set({
-      key: this.songsStorage,
-      value: JSON.stringify(this.songsCustom)
-    });
   }
 }
