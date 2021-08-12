@@ -9,7 +9,7 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { first, from, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, take } from 'rxjs/operators';
 import { Artist } from '../../interfaces/Artist';
 
 @Injectable({
@@ -30,5 +30,21 @@ export class ArtistStorageService {
         first(),
         map(value => (JSON.parse(value.value) || []) as Artist[])
       );
+  }
+
+  getArtist(id: string | number): Artist | null {
+    let artist: Artist = null;
+    this.get()
+      .pipe(
+        take(1),
+        map((artists) => artists.filter(a => a.id === id))
+      )
+      .subscribe(artists => {
+        if (artists.length > 0) {
+          artist = artists[0];
+        }
+      });
+
+    return artist;
   }
 }
