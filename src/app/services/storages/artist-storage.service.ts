@@ -24,6 +24,9 @@ export class ArtistStorageService {
   ) {
   }
 
+  /**
+   * Get list of artists in obs$
+   */
   get(): Observable<Artist[]> {
     return from(this.storageService.get(this.storageName))
       .pipe(
@@ -32,6 +35,11 @@ export class ArtistStorageService {
       );
   }
 
+  /**
+   * Get artist
+   *
+   * @param id
+   */
   getArtist(id: string | number): Artist | null {
     let artist: Artist = null;
     this.get()
@@ -46,5 +54,27 @@ export class ArtistStorageService {
       });
 
     return artist;
+  }
+
+  /**
+   * Save list of artists
+   *
+   * @param artists
+   */
+  set(artists: Artist[]) {
+    this.storageService.set(this.storageName, JSON.stringify(artists));
+  }
+
+  /**
+   * Save artist
+   *
+   * @param artist
+   */
+  setArtist(artist: Artist) {
+    this.get().subscribe(artists => {
+      const arts: Artist[] = artists;
+      arts.push(artist);
+      this.set(arts);
+    });
   }
 }
