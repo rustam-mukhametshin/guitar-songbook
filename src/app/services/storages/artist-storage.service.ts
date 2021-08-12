@@ -7,12 +7,28 @@
  */
 
 import { Injectable } from '@angular/core';
+import { StorageService } from './storage.service';
+import { first, from, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Artist } from '../../interfaces/Artist';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistStorageService {
 
-  constructor() {
+  private readonly storageName = 'artists';
+
+  constructor(
+    private readonly storageService: StorageService
+  ) {
+  }
+
+  get(): Observable<Artist[]> {
+    return from(this.storageService.get(this.storageName))
+      .pipe(
+        first(),
+        map(value => (JSON.parse(value.value) || []) as Artist[])
+      );
   }
 }
