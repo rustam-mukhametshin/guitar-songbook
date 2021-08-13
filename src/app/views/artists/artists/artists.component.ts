@@ -26,7 +26,7 @@ export class ArtistsComponent implements OnInit {
   ];
   artists$: Observable<Artist[]>;
 
-  private readonly type: string;
+  type: string;
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,

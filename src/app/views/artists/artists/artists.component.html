@@ -36,7 +36,9 @@
   <!-- List of Text Items -->
   <ion-list *ngIf="artists$ | async as artists">
     <ion-item *ngFor="let art of artists">
-      <ion-label [routerLink]="['/songs', art.id]">
+      <ion-label [queryParams]="{type: type}"
+                 [routerLink]="['/songs', art.id]"
+      >
         {{art.name}}
       </ion-label>
     </ion-item>
