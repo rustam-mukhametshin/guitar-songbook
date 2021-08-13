@@ -39,7 +39,7 @@ export class SongService {
    * @param value
    * @param artistId
    */
-  addNewCustomSong(value: Song, artistId: number = 0): void {
+  addNewCustomSong(value: Song, artistId: number = 0): Observable<void> {
     const song: Song = {
       title: value.title,
       body: '', // Todo,
@@ -67,7 +67,7 @@ export class SongService {
         });
     }
 
-    this.songStorageService.set(this.songsCustom);
+    return this.songStorageService.set(this.songsCustom);
   }
 
   /**

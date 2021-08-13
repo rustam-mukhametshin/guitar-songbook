@@ -37,7 +37,7 @@ export class SongStorageService {
    *
    * @param songs
    */
-  set(songs: Song[]) {
-    this.storageService.set(this.storageName, JSON.stringify(songs));
+  set(songs: Song[]): Observable<void> {
+    return from(this.storageService.set(this.storageName, JSON.stringify(songs)));
   }
 }
