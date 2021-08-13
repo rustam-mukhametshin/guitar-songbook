@@ -11,6 +11,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 import { ArtistsComponent } from './views/artists/artists/artists.component';
+import { SongsComponent } from './views/songs/songs/songs.component';
 
 const routes: Routes = [
   {
@@ -27,7 +28,17 @@ const routes: Routes = [
   },
   {
     path: 'customs',
-    component: ArtistsComponent,
+    children: [
+      {
+        path: '',
+        component: ArtistsComponent,
+        pathMatch: 'full'
+      },
+      {
+        path: ':artistId',
+        component: SongsComponent,
+      }
+    ]
   },
   {
     path: 'song/:id',
