@@ -53,4 +53,8 @@ export class ArtistsService {
   getCustoms(): Observable<Artist[]> {
     return this.artistStorageService.get();
   }
+
+  setArtist(artist: Artist): Observable<void> {
+    return this.artistStorageService.setArtist(artist);
+  }
 }
