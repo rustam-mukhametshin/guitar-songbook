@@ -49,4 +49,11 @@ export class StorageService {
       key
     });
   }
+
+  /**
+   * Clear storage
+   */
+  clear(): Promise<void> {
+    return Storage.clear();
+  }
 }
