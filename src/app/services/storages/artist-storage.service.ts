@@ -8,7 +8,7 @@
 
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { first, from, Observable } from 'rxjs';
+import { first, from, Observable, switchMap } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Artist } from '../../interfaces/Artist';
 
@@ -70,11 +70,15 @@ export class ArtistStorageService {
    *
    * @param artist
    */
-  setArtist(artist: Artist) {
-    this.get().subscribe(artists => {
-      const arts: Artist[] = artists;
-      arts.push(artist);
-      this.set(arts);
-    });
+  setArtist(artist: Artist): Observable<void> {
+    return this.get()
+      .pipe(
+        take(1),
+        switchMap(artists => {
+          const arts: Artist[] = artists;
+          arts.push(artist);
+          return this.set(arts);
+        })
+      );
   }
 }
