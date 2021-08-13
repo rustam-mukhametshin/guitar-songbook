@@ -7,10 +7,11 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ChordNames } from '../../../enums/ChordNames';
+import { take } from 'rxjs/operators';
 import { SongService } from '../../../services/song.service';
+import { ChordNames } from '../../../enums/ChordNames';
 
 @Component({
   selector: 'app-song-create',
@@ -29,6 +30,7 @@ export class SongCreateComponent implements OnInit {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router,
     private readonly songService: SongService
   ) {
     this.artistId = this.activatedRoute.snapshot.paramMap.get('artistId');
@@ -50,7 +52,18 @@ export class SongCreateComponent implements OnInit {
       this.artistId = parseInt(this.artistId, 10);
     }
 
-    this.songService.addNewCustomSong(this.songForm.value, this.artistId);
+    this.songService
+      .addNewCustomSong(this.songForm.value, this.artistId)
+      .pipe(take(1))
+      .subscribe(() => {
+
+        this.router.navigate(['/customs', this.artistId], {
+          queryParams: {
+            type: 'custom'
+          }
+        });
+      })
+    ;
   }
 
   /**
