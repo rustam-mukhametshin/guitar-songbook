@@ -61,8 +61,8 @@ export class ArtistStorageService {
    *
    * @param artists
    */
-  set(artists: Artist[]) {
-    this.storageService.set(this.storageName, JSON.stringify(artists));
+  set(artists: Artist[]): Observable<void> {
+    return from(this.storageService.set(this.storageName, JSON.stringify(artists)));
   }
 
   /**
