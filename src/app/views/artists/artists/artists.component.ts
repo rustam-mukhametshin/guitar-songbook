@@ -52,7 +52,7 @@ export class ArtistsComponent implements OnInit {
         this.artists$ = this.artistsService.getArtists();
         break;
       case 'custom':
-        this.artists$ = this.artistsService.getArtists();
+        this.artists$ = this.artistsService.getCustoms();
         break;
       default:
         this.artists$ = this.artistsService.getArtists();
