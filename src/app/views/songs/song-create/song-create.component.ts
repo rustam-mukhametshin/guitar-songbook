@@ -73,7 +73,7 @@ export class SongCreateComponent implements OnInit {
    */
   private setForm(): FormGroup {
     return new FormGroup({
-      name: new FormControl('', [
+      title: new FormControl('', [
         Validators.required,
       ]),
       initialPause: new FormControl('', [
