@@ -76,6 +76,9 @@ export class SongService {
    */
   loadSavedSongs(): void {
     this.songStorageService.get()
+      .pipe(
+        take(1)
+      )
       .subscribe((songs) => this.songCustomSubj$.next(songs));
   }
 }
