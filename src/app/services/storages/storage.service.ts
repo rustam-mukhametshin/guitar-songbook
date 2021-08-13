@@ -38,4 +38,15 @@ export class StorageService {
       value
     });
   }
+
+  /**
+   * Remove key from storage
+   *
+   * @param key
+   */
+  remove(key: string): Promise<void> {
+    return Storage.remove({
+      key
+    });
+  }
 }
