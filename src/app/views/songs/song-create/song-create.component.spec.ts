@@ -11,7 +11,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { SongCreateComponent } from './song-create.component';
 
-describe('SongCreateComponent', () => {
+xdescribe('SongCreateComponent', () => {
   let component: SongCreateComponent;
   let fixture: ComponentFixture<SongCreateComponent>;
 
