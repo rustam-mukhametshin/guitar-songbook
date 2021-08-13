@@ -8,6 +8,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ArtistsService } from '../../../services/artists.service';
+import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -18,7 +21,10 @@ export class CreateComponent implements OnInit {
   // Song form
   form: FormGroup;
 
-  constructor() {
+  constructor(
+    private readonly artistsService: ArtistsService,
+    private readonly router: Router
+  ) {
   }
 
   ngOnInit() {
@@ -32,7 +38,21 @@ export class CreateComponent implements OnInit {
    * Todo
    */
   save() {
-
+    this.artistsService
+      .setArtist(this.form.value)
+      .pipe(
+        take(1)
+      )
+      .subscribe(_ => {
+        this.router.navigate(['/customs'],
+          {
+            queryParams: {
+              type: 'custom'
+            }
+          }
+        );
+      })
+    ;
   }
 
   /**
