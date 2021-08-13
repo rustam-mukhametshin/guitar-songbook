@@ -23,8 +23,8 @@ export class SongService {
 
   readonly songsCustom: Song[] = [];
 
-  readonly songSubj$: Subject<Song[]> = new BehaviorSubject([]);
-  readonly songs$: Observable<Song[]> = this.songSubj$.asObservable();
+  readonly songCustomSubj$: Subject<Song[]> = new BehaviorSubject([]);
+  readonly songsCustom$: Observable<Song[]> = this.songCustomSubj$.asObservable();
 
   constructor(
     private readonly songStorageService: SongStorageService,
@@ -76,6 +76,6 @@ export class SongService {
    */
   loadSavedSongs(): void {
     this.songStorageService.get()
-      .subscribe((songs) => this.songSubj$.next(songs));
+      .subscribe((songs) => this.songCustomSubj$.next(songs));
   }
 }
