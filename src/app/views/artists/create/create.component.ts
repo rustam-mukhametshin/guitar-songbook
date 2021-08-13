@@ -11,6 +11,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ArtistsService } from '../../../services/artists.service';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Artist } from '../../../interfaces/Artist';
+import { v4 as uid } from 'uuid';
 
 @Component({
   selector: 'app-create',
@@ -38,8 +40,14 @@ export class CreateComponent implements OnInit {
    * Todo
    */
   save() {
+
+    const artist: Artist = {
+      ...this.form.value,
+      id: uid()
+    };
+
     this.artistsService
-      .setArtist(this.form.value)
+      .setArtist(artist)
       .pipe(
         take(1)
       )
