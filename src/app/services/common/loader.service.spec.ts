@@ -25,10 +25,12 @@ describe('LoaderService', () => {
   it('#show should be shown', done => {
     service.show();
     expect(service.loader).toBeTruthy();
+    done();
   });
 
   it('#show should be hidden', done => {
     service.hide();
     expect(service.loader).toBeFalse();
+    done();
   });
 });
