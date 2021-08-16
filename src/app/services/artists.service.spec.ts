@@ -18,7 +18,8 @@ describe('ArtistsService', () => {
   let artistsService: ArtistsService;
   const artistsServiceSpy = jasmine.createSpyObj('ArtistsService', [
     'getArtists',
-    'getArtist'
+    'getArtist',
+    'getCustoms'
   ]);
 
   let fake: Artist[];
@@ -73,6 +74,7 @@ describe('ArtistsService', () => {
 
     artistsServiceSpy.getArtists.and.returnValue(of(fake));
     artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(fake[arg]));
+    artistsServiceSpy.getCustoms.and.returnValue(of(fake));
   });
 
   it('should be created', () => {
@@ -101,6 +103,15 @@ describe('ArtistsService', () => {
       .pipe(first())
       .subscribe(art => {
         expect(art).toEqual(fake[id2]);
+        done();
+      });
+  });
+
+  it('#getCustoms should return list of custom artists', done => {
+    artistsService.getCustoms()
+      .pipe(first())
+      .subscribe(c => {
+        expect(c).toEqual(fake);
         done();
       });
   });
