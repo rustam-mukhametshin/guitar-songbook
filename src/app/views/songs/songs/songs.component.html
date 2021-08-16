@@ -64,7 +64,7 @@
 <ion-content [fullscreen]="true">
 
   <!-- List of Text Items -->
-  <ion-list *ngIf="(songs$ | async) as songs ">
+  <ion-list *ngIf="(songs$ | async) as songs; else empty">
     <ion-item *ngFor="let s of songs | search : searchText">
 
       <ion-button
@@ -92,3 +92,10 @@
 
 </ion-content>
 
+<ng-template #empty>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>No songs</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+</ng-template>
