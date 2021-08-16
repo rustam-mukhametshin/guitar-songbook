@@ -17,7 +17,8 @@ import { Artist } from '../interfaces/Artist';
 describe('ArtistsService', () => {
   let artistsService: ArtistsService;
   const artistsServiceSpy = jasmine.createSpyObj('ArtistsService', [
-    'getArtists'
+    'getArtists',
+    'getArtist'
   ]);
 
   let fake: Artist[];
@@ -49,20 +50,29 @@ describe('ArtistsService', () => {
       {
         id: 2,
         name: 'test2',
+      },
+      {
+        id: 3,
+        name: 'test3',
       }
     ] as Artist[];
     fake2 = [
       {
-        id: 1,
-        name: 'test3',
+        id: 4,
+        name: 'test4',
       },
       {
-        id: 2,
-        name: 'test2',
+        id: 5,
+        name: 'test5',
+      },
+      {
+        id: 6,
+        name: 'test6',
       }
     ] as Artist[];
 
     artistsServiceSpy.getArtists.and.returnValue(of(fake));
+    artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(fake[arg]));
   });
 
   it('should be created', () => {
@@ -71,11 +81,26 @@ describe('ArtistsService', () => {
 
   it('#getArtists should return list of artists', done => {
     artistsService.getArtists()
-      .pipe(
-        first()
-      )
+      .pipe(first())
       .subscribe(c => {
         expect(c).toEqual(fake);
+        done();
+      });
+  });
+
+  it('#getArtist should return single artist', done => {
+    const id = 0;
+    const id2 = '1';
+    artistsService.getArtist(id)
+      .pipe(first())
+      .subscribe(art => {
+        expect(art).toEqual(fake[id]);
+        done();
+      });
+    artistsService.getArtist(id2)
+      .pipe(first())
+      .subscribe(art => {
+        expect(art).toEqual(fake[id2]);
         done();
       });
   });
