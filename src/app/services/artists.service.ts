@@ -27,10 +27,18 @@ export class ArtistsService {
   ) {
   }
 
+  /**
+   * Get list of artists from API
+   */
   getArtists(): Observable<Artist[]> {
     return this.httpClient.get<Artist[]>(this.apiUrl + '/users/');
   }
 
+  /**
+   * Get single artist from API
+   *
+   * @param id
+   */
   getArtist(id: number | string): Observable<Artist> {
     return this.httpClient.get<Artist>(this.apiUrl + '/users/' + id)
       .pipe(
@@ -43,6 +51,11 @@ export class ArtistsService {
     return this.httpClient.get<Song[]>(this.apiUrl + '/posts?userId=' + userId);
   }
 
+  /**
+   * Get single song
+   *
+   * @param id
+   */
   getSong(id: number | string): Observable<Song> {
     return this.httpClient.get<Song>(this.apiUrl + '/posts/' + id);
   }
@@ -54,6 +67,11 @@ export class ArtistsService {
     return this.artistStorageService.get();
   }
 
+  /**
+   * Save new artist to `custom`
+   *
+   * @param artist
+   */
   setArtist(artist: Artist): Observable<void> {
     return this.artistStorageService.setArtist(artist);
   }
