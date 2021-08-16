@@ -15,6 +15,8 @@ import { ArtistStorageService } from './storages/artist-storage.service';
 import { Artist } from '../interfaces/Artist';
 import { ArtistsService } from './artists.service';
 import { take } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +31,8 @@ export class SongService {
   constructor(
     private readonly songStorageService: SongStorageService,
     private readonly artistStorageService: ArtistStorageService,
-    private readonly artistsService: ArtistsService
+    private readonly artistsService: ArtistsService,
+    private readonly httpClient: HttpClient,
   ) {
   }
 
@@ -80,5 +83,14 @@ export class SongService {
         take(1)
       )
       .subscribe((songs) => this.songCustomSubj$.next(songs));
+  }
+
+  /**
+   * Get songs by artist id
+   *
+   * @param userId
+   */
+  getSongsByArtistId(userId: number | string): Observable<Song[]> {
+    return this.httpClient.get<Song[]>(environment.apiUrl + '/posts?userId=' + userId);
   }
 }

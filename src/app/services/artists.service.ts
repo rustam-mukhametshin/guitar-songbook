@@ -48,15 +48,6 @@ export class ArtistsService {
   }
 
   /**
-   * Get songs by artist id
-   *
-   * @param userId
-   */
-  getSongsByArtistId(userId: number | string): Observable<Song[]> {
-    return this.httpClient.get<Song[]>(this.apiUrl + '/posts?userId=' + userId);
-  }
-
-  /**
    * Get single song
    *
    * @param id

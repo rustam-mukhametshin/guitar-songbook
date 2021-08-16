@@ -53,7 +53,7 @@ export class SongsComponent implements OnInit {
   private get list(): Observable<Song[]> {
     switch (this.type) {
       case 'favourite':
-        return this.artistsService.getSongsByArtistId(this.artistId);
+        return this.songService.getSongsByArtistId(this.artistId);
       case 'custom':
         this.songService.loadSavedSongs();
 
@@ -64,7 +64,7 @@ export class SongsComponent implements OnInit {
           )
         );
       default:
-        return this.artistsService.getSongsByArtistId(this.artistId);
+        return this.songService.getSongsByArtistId(this.artistId);
     }
   }
 
