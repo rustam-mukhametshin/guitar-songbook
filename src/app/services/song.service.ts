@@ -93,4 +93,13 @@ export class SongService {
   getSongsByArtistId(userId: number | string): Observable<Song[]> {
     return this.httpClient.get<Song[]>(environment.apiUrl + '/posts?userId=' + userId);
   }
+
+  /**
+   * Get single song
+   *
+   * @param id
+   */
+  getSong(id: number | string): Observable<Song> {
+    return this.httpClient.get<Song>(environment.apiUrl + '/posts/' + id);
+  }
 }

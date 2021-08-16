@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, shareReplay } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Artist } from '../interfaces/Artist';
-import { Song } from '../interfaces/Song';
 import { ArtistStorageService } from './storages/artist-storage.service';
 
 @Injectable({
@@ -45,15 +44,6 @@ export class ArtistsService {
         shareReplay()
       )
       ;
-  }
-
-  /**
-   * Get single song
-   *
-   * @param id
-   */
-  getSong(id: number | string): Observable<Song> {
-    return this.httpClient.get<Song>(this.apiUrl + '/posts/' + id);
   }
 
   /**

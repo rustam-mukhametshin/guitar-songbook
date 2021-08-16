@@ -1,10 +1,18 @@
+/*
+ * Guitar songbook project
+ *
+ * @author Rustam Mukhametshin <https://github.com/iproman>
+ * @link https://github.com/iproman
+ * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArtistsService } from '../../services/artists.service';
 import { Observable } from 'rxjs';
 import { Song } from '../../interfaces/Song';
 import { map, switchMap } from 'rxjs/operators';
 import { fromFetch } from 'rxjs/fetch';
+import { SongService } from '../../services/song.service';
 
 @Component({
   selector: 'app-song',
@@ -17,7 +25,7 @@ export class SongComponent implements OnInit {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private readonly artistsService: ArtistsService
+    private readonly songService: SongService
   ) {
   }
 
@@ -26,7 +34,7 @@ export class SongComponent implements OnInit {
 
     this.song$ = this.getFromFetch().pipe(
       switchMap(val =>
-        (this.artistsService.getSong(id)
+        (this.songService.getSong(id)
           .pipe(map(value => ({...value, ...{body: val}} as Song))))
       )
     );
