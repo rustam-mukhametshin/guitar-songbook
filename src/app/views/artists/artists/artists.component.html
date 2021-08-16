@@ -34,7 +34,7 @@
 <ion-content [fullscreen]="true">
 
   <!-- List of Text Items -->
-  <ion-list *ngIf="artists$ | async as artists">
+  <ion-list *ngIf="artists$ | async as artists; else empty">
     <ion-item *ngFor="let art of artists">
       <ion-label [queryParams]="{type: type}"
                  [routerLink]="['/songs', art.id]"
@@ -43,5 +43,13 @@
       </ion-label>
     </ion-item>
   </ion-list>
+
+  <ng-template #empty>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>No artists</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-template>
 
 </ion-content>
