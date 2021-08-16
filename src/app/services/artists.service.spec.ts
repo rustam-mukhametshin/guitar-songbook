@@ -19,7 +19,8 @@ describe('ArtistsService', () => {
   const artistsServiceSpy = jasmine.createSpyObj('ArtistsService', [
     'getArtists',
     'getArtist',
-    'getCustoms'
+    'getCustoms',
+    'setArtist'
   ]);
 
   let fake: Artist[];
@@ -75,6 +76,8 @@ describe('ArtistsService', () => {
     artistsServiceSpy.getArtists.and.returnValue(of(fake));
     artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(fake[arg]));
     artistsServiceSpy.getCustoms.and.returnValue(of(fake));
+    // TODO: Check saving and returning from storage
+    artistsServiceSpy.setArtist.and.callFake((artist: Artist) => of(null));
   });
 
   it('should be created', () => {
@@ -112,6 +115,18 @@ describe('ArtistsService', () => {
       .pipe(first())
       .subscribe(c => {
         expect(c).toEqual(fake);
+        done();
+      });
+  });
+
+  it('#setArtist should return null and save custom artist', done => {
+    artistsService.setArtist(
+      fake[0]
+    )
+      .pipe(first())
+      .subscribe(c => {
+        expect(c).toBeNull();
+        // TODO: Check saving and returning from storage
         done();
       });
   });
