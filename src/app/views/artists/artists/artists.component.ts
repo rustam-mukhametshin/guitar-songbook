@@ -8,9 +8,10 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ArtistsService } from '../../../services/artists.service';
-import { Observable } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { Artist } from '../../../interfaces/Artist';
 import { ActivatedRoute } from '@angular/router';
+import { LoaderService } from '../../../services/common/loader.service';
 
 @Component({
   selector: 'app-artists',
@@ -30,34 +31,46 @@ export class ArtistsComponent implements OnInit {
 
   constructor(
     private readonly activatedRoute: ActivatedRoute,
-    private artistsService: ArtistsService
+    private readonly artistsService: ArtistsService,
+    private readonly loaderService: LoaderService
   ) {
     this.type = this.activatedRoute.snapshot.queryParamMap.get('type');
-  }
-
-  ngOnInit() {
-    this.initArtistList();
   }
 
   /**
    * Get list of artist base on type
    *
-   * Todo: change list
-   *
    * @private
    */
-  private initArtistList() {
+  private get list(): Observable<Artist[]> {
     switch (this.type) {
       case 'favourite':
-        this.artists$ = this.artistsService.getArtists();
-        break;
+        return this.artistsService.getArtists();
       case 'custom':
-        this.artists$ = this.artistsService.getCustoms();
-        break;
+        return this.artistsService.getCustoms();
       default:
-        this.artists$ = this.artistsService.getArtists();
-        break;
+        return this.artistsService.getArtists();
     }
+  }
+
+  ngOnInit() {
+    this.initList();
+  }
+
+  /**
+   * @private
+   */
+  private initList() {
+    this.artists$ = this.list
+      .pipe(
+        tap(_ => {
+          this.loaderService.show();
+        }),
+        finalize(() => {
+          this.loaderService.hide();
+        })
+      );
+
   }
 
 }
