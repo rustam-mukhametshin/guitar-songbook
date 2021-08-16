@@ -18,6 +18,7 @@ import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
 import { SharedModule } from './modules/shared.module';
 import { CoreModule } from './modules/core.module';
+import { CommonViewModule } from './views/common/common-view.module';
 
 const components = [
   SidebarComponent,
@@ -39,6 +40,7 @@ const components = [
     CoreModule,
     AppRoutingModule,
     SharedModule,
+    CommonViewModule,
   ],
   bootstrap: [AppComponent],
 })
