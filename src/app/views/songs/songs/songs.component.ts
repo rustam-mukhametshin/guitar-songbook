@@ -7,13 +7,14 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { finalize, Observable, tap } from 'rxjs';
 import { ArtistsService } from '../../../services/artists.service';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../../../interfaces/Song';
 import { Artist } from '../../../interfaces/Artist';
 import { SongService } from '../../../services/song.service';
 import { map } from 'rxjs/operators';
+import { LoaderService } from '../../../services/common/loader.service';
 
 
 @Component({
@@ -36,10 +37,35 @@ export class SongsComponent implements OnInit {
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly artistsService: ArtistsService,
-    private readonly songService: SongService
+    private readonly songService: SongService,
+    private readonly loaderService: LoaderService
   ) {
     this.artistId = this.activatedRoute.snapshot.paramMap.get('artistId');
     this.type = this.activatedRoute.snapshot.queryParamMap.get('type');
+  }
+
+  /**
+   * Get list of songs
+   * base on type
+   *
+   * @private
+   */
+  private get list(): Observable<Song[]> {
+    switch (this.type) {
+      case 'favourite':
+        return this.artistsService.getPostsByUserId(this.artistId);
+      case 'custom':
+        this.songService.loadSavedSongs();
+
+        return this.songService.songsCustom$.pipe(
+          map(songs => songs.filter(
+              song => song.userId === Number.parseInt(this.artistId, 10)
+            )
+          )
+        );
+      default:
+        return this.artistsService.getPostsByUserId(this.artistId);
+    }
   }
 
   ngOnInit() {
@@ -66,25 +92,17 @@ export class SongsComponent implements OnInit {
    * @private
    */
   private initList() {
-    switch (this.type) {
-      case 'favourite':
-        // Todo
-        this.songs$ = this.artistsService.getPostsByUserId(this.artistId);
-        break;
-      case 'custom':
-        this.songService.loadSavedSongs();
 
-        this.songs$ = this.songService.songsCustom$.pipe(
-          map(songs => songs.filter(
-              song => song.userId === Number.parseInt(this.artistId, 10)
-            )
-          )
-        );
-        break;
-      default:
-        this.songs$ = this.artistsService.getPostsByUserId(this.artistId);
-        break;
-    }
+    this.songs$ = this.list
+      .pipe(
+        tap(_ => {
+          this.loaderService.show();
+        }),
+        finalize(() => {
+          this.loaderService.hide();
+        })
+      )
+    ;
   }
 
 }
