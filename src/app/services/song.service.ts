@@ -9,10 +9,9 @@
 import { Injectable } from '@angular/core';
 import { Song } from '../interfaces/Song';
 import { v4 as uid } from 'uuid';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, switchMap } from 'rxjs';
 import { SongStorageService } from './storages/song-storage.service';
 import { ArtistStorageService } from './storages/artist-storage.service';
-import { Artist } from '../interfaces/Artist';
 import { ArtistsService } from './artists.service';
 import { take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -56,19 +55,11 @@ export class SongService {
       isFavourite: false
     };
 
+    // Add song to list
     this.songsCustom.unshift(song);
 
-    const artist: Artist = this.artistStorageService.getArtist(artistId);
-
-    if (!artist) {
-      this.artistsService.getArtist(artistId)
-        .pipe(
-          take(1)
-        )
-        .subscribe(a => {
-          this.artistStorageService.setArtist(a);
-        });
-    }
+    // Add artist
+    this.addArtistIfNotExist(artistId);
 
     return this.songStorageService.set(this.songsCustom);
   }
@@ -101,5 +92,25 @@ export class SongService {
    */
   getSong(id: number | string): Observable<Song> {
     return this.httpClient.get<Song>(environment.apiUrl + '/posts/' + id);
+  }
+
+  /**
+   * Add artist if not exist in storage
+   *
+   * @param artistId
+   * @private
+   */
+  private addArtistIfNotExist(artistId: number | string) {
+    this.artistStorageService.getArtist(artistId)
+      .subscribe(artistOrNull => {
+        if (artistOrNull === null) {
+          this.artistsService.getArtist(artistId)
+            .pipe(
+              switchMap(a => this.artistStorageService.setArtist(a)),
+              take(1)
+            )
+            .subscribe();
+        }
+      });
   }
 }
