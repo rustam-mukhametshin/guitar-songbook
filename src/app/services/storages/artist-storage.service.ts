@@ -8,7 +8,7 @@
 
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { from, Observable, switchMap } from 'rxjs';
+import { from, Observable, of, switchMap } from 'rxjs';
 import { map, take } from 'rxjs/operators';
 import { Artist } from '../../interfaces/Artist';
 
@@ -39,20 +39,12 @@ export class ArtistStorageService {
    *
    * @param id
    */
-  getArtist(id: string | number): Artist | null {
-    let artist: Artist = null;
-    this.get()
+  getArtist(id: string | number): Observable<Artist> | Observable<null> {
+    return this.get()
       .pipe(
-        take(1),
-        map((artists) => artists.filter(a => a.id === id))
-      )
-      .subscribe(artists => {
-        if (artists.length > 0) {
-          artist = artists[0];
-        }
-      });
-
-    return artist;
+        map((artists) => artists.filter(a => a.id === id)),
+        switchMap(artists => artists.length > 0 ? of(artists[0]) : of(null))
+      );
   }
 
   /**
