@@ -52,6 +52,10 @@ export class SongCreateComponent implements OnInit {
       this.artistId = parseInt(this.artistId, 10);
     }
 
+    if (this.songForm.invalid) {
+      return;
+    }
+
     this.songService
       .addNewCustomSong(this.songForm.value, this.artistId)
       .pipe(take(1))
