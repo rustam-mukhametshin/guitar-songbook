@@ -9,7 +9,7 @@
 import { Artist } from '../interfaces/Artist';
 
 export class Fake {
-  artists: Artist[] = [
+  static artists: Artist[] = [
     {
       id: 1,
       name: 'test',
@@ -26,7 +26,7 @@ export class Fake {
 }
 
 export class Fake2 {
-  artists: Artist[] = [
+  static artists: Artist[] = [
     {
       id: 4,
       name: 'test4',
