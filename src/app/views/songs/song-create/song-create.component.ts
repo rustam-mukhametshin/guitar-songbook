@@ -53,6 +53,7 @@ export class SongCreateComponent implements OnInit {
     }
 
     if (this.songForm.invalid) {
+      this.songForm.markAllAsTouched();
       return;
     }
 
