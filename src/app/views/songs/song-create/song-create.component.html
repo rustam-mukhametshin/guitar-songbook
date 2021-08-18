@@ -24,7 +24,9 @@
     <ion-buttons slot="secondary">
       <ion-button
         (click)="save()"
-        fill="clear">
+        [disabled]="songForm.invalid"
+        fill="clear"
+      >
         <ion-icon
           [ios]="'save'"
           [md]="'save'"></ion-icon>
