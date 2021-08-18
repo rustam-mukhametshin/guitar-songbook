@@ -18,7 +18,8 @@ import SpyObj = jasmine.SpyObj;
 describe('ArtistStorageService', () => {
   let service: ArtistStorageService;
   const artistStorageServiceSpy = jasmine.createSpyObj('ArtistStorageService', [
-    'get'
+    'get',
+    'getArtist'
   ]) as SpyObj<ArtistStorageService>;
 
   let fake: Artist[];
@@ -41,6 +42,7 @@ describe('ArtistStorageService', () => {
     fake2 = Fake2.artists;
 
     artistStorageServiceSpy.get.and.returnValue(of(fake));
+    artistStorageServiceSpy.getArtist.and.callFake(id => of(fake.filter(art => art.id === id)[0]));
   });
 
   it('should be created', () => {
@@ -51,6 +53,14 @@ describe('ArtistStorageService', () => {
     artistStorageServiceSpy.get()
       .subscribe(v => {
         expect(v).toEqual(fake);
+        done();
+      });
+  });
+
+  it('#getArtist should return one artist by id', done => {
+    service.getArtist(1)
+      .subscribe(v => {
+        expect(v).toEqual(fake[0]);
         done();
       });
   });
