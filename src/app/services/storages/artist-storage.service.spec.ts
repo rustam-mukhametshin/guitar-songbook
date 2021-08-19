@@ -64,4 +64,12 @@ describe('ArtistStorageService', () => {
         done();
       });
   });
+
+  xit('#set should Save list of artists', done => {
+    done();
+  });
+
+  xit('#setArtist should Save artist', done => {
+    done();
+  });
 });
