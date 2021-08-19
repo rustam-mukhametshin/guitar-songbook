@@ -13,18 +13,16 @@ import { ArtistStorageService } from './storages/artist-storage.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { first, of } from 'rxjs';
 import { Artist } from '../interfaces/Artist';
+import { Fake } from '../test/fake';
 
 describe('ArtistsService', () => {
   let artistsService: ArtistsService;
-  const artistsServiceSpy = jasmine.createSpyObj('ArtistsService', [
+  const artistsServiceSpy = jasmine.createSpyObj(ArtistsService, [
     'getArtists',
     'getArtist',
     'getCustoms',
     'setArtist'
   ]);
-
-  let fake: Artist[];
-  let fake2: Artist[];
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -44,38 +42,9 @@ describe('ArtistsService', () => {
   });
 
   beforeEach(() => {
-    fake = [
-      {
-        id: 1,
-        name: 'test',
-      },
-      {
-        id: 2,
-        name: 'test2',
-      },
-      {
-        id: 3,
-        name: 'test3',
-      }
-    ] as Artist[];
-    fake2 = [
-      {
-        id: 4,
-        name: 'test4',
-      },
-      {
-        id: 5,
-        name: 'test5',
-      },
-      {
-        id: 6,
-        name: 'test6',
-      }
-    ] as Artist[];
-
-    artistsServiceSpy.getArtists.and.returnValue(of(fake));
-    artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(fake[arg]));
-    artistsServiceSpy.getCustoms.and.returnValue(of(fake));
+    artistsServiceSpy.getArtists.and.returnValue(of(Fake.artists));
+    artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(Fake.artists[arg]));
+    artistsServiceSpy.getCustoms.and.returnValue(of(Fake.artists));
     // TODO: Check saving and returning from storage
     artistsServiceSpy.setArtist.and.callFake((artist: Artist) => of(null));
   });
@@ -88,7 +57,7 @@ describe('ArtistsService', () => {
     artistsService.getArtists()
       .pipe(first())
       .subscribe(c => {
-        expect(c).toEqual(fake);
+        expect(c).toEqual(Fake.artists);
         done();
       });
   });
@@ -99,13 +68,13 @@ describe('ArtistsService', () => {
     artistsService.getArtist(id)
       .pipe(first())
       .subscribe(art => {
-        expect(art).toEqual(fake[id]);
+        expect(art).toEqual(Fake.artists[id]);
         done();
       });
     artistsService.getArtist(id2)
       .pipe(first())
       .subscribe(art => {
-        expect(art).toEqual(fake[id2]);
+        expect(art).toEqual(Fake.artists[id2]);
         done();
       });
   });
@@ -114,14 +83,14 @@ describe('ArtistsService', () => {
     artistsService.getCustoms()
       .pipe(first())
       .subscribe(c => {
-        expect(c).toEqual(fake);
+        expect(c).toEqual(Fake.artists);
         done();
       });
   });
 
   it('#setArtist should return null and save custom artist', done => {
     artistsService.setArtist(
-      fake[0]
+      Fake.artists[0]
     )
       .pipe(first())
       .subscribe(c => {
