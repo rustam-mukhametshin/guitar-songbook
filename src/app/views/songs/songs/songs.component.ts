@@ -7,14 +7,16 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { finalize, Observable, tap } from 'rxjs';
+import { finalize, from, Observable, tap } from 'rxjs';
 import { ArtistsService } from '../../../services/artists.service';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../../../interfaces/Song';
 import { Artist } from '../../../interfaces/Artist';
 import { SongService } from '../../../services/song.service';
-import { map } from 'rxjs/operators';
+import { map, switchMap, take } from 'rxjs/operators';
 import { LoaderService } from '../../../services/common/loader.service';
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponent } from '../../common/popover/popover.component';
 
 
 @Component({
@@ -38,7 +40,8 @@ export class SongsComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly artistsService: ArtistsService,
     private readonly songService: SongService,
-    private readonly loaderService: LoaderService
+    private readonly loaderService: LoaderService,
+    public readonly popoverController: PopoverController
   ) {
     this.artistId = this.activatedRoute.snapshot.paramMap.get('artistId');
     this.type = this.activatedRoute.snapshot.queryParamMap.get('type');
@@ -82,6 +85,34 @@ export class SongsComponent implements OnInit {
   }
 
   removeFromFavourite(id: number | string) {
+
+  }
+
+  /**
+   * Todo: Interface + property for `info menu`
+   * Todo: Get Dynamic from module
+   *
+   * @param ev
+   */
+  showInfoMenu(ev: any) {
+    const popover = this.popoverController.create({
+      component: PopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: false,
+      showBackdrop: false,
+      componentProps: {
+        values: [
+          'Value',
+          'Value2'
+        ]
+      }
+    });
+    from(popover)
+      .pipe(
+        switchMap(pop => pop.present()),
+        take(1)
+      ).subscribe();
 
   }
 

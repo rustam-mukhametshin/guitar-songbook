@@ -50,7 +50,9 @@
         ></ion-icon>
       </ion-button>
 
-      <ion-button fill="clear">
+      <ion-button (click)="showInfoMenu($event)"
+                  fill="clear"
+      >
         <ion-icon
           [ios]="'ellipsis-vertical-outline'"
           [md]="'ellipsis-vertical-outline'"></ion-icon>
