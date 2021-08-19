@@ -10,9 +10,11 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../../modules/shared.module';
 import { LoaderComponent } from './loader/loader.component';
+import { PopoverComponent } from './popover/popover.component';
 
 const components = [
-  LoaderComponent
+  LoaderComponent,
+  PopoverComponent,
 ];
 
 @NgModule({
