@@ -9,16 +9,37 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SongService } from './song.service';
+import { HttpClientModule } from '@angular/common/http';
 
-xdescribe('SongService', () => {
+describe('SongService', () => {
   let service: SongService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientModule,
+      ]
+    });
     service = TestBed.inject(SongService);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  xit('#addNewCustomSong should Add and save custom song', done => {
+    done();
+  });
+
+  xit('#loadSavedSongs should Load saved songs', done => {
+    done();
+  });
+
+  xit('#getSongsByArtistId should Get songs by artist id', done => {
+    done();
+  });
+
+  xit('#getSong should Get single song', done => {
+    done();
   });
 });
