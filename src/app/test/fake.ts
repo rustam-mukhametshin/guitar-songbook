@@ -28,6 +28,13 @@ export class Fake {
     }
   ];
   /**
+   * Artist
+   */
+  static artist: Artist = {
+    id: 1,
+    name: 'artist 1',
+  };
+  /**
    * Songs
    */
   static songs: Song[] = [
@@ -65,6 +72,20 @@ export class Fake {
       isFavourite: false,
     }
   ];
+  /**
+   * Song
+   */
+  static song: Song = {
+    id: 1,
+    title: 'title 1',
+    body: '',
+    comments: 'Comments 1',
+    isCustom: false,
+    initialPause: 111,
+    duration: 111,
+    userId: 111,
+    isFavourite: false,
+  };
 }
 
 export class Fake2 {
@@ -85,6 +106,13 @@ export class Fake2 {
       name: 'test6',
     }
   ];
+  /**
+   * Artist
+   */
+  static artist: Artist = {
+    id: 4,
+    name: 'artist 4',
+  };
   /**
    * Songs
    */
@@ -123,4 +151,18 @@ export class Fake2 {
       isFavourite: false,
     }
   ];
+  /**
+   * Song
+   */
+  static song: Song = {
+    id: 4,
+    title: 'title 4',
+    body: '',
+    comments: 'Comments 4',
+    isCustom: false,
+    initialPause: 444,
+    duration: 444,
+    userId: 444,
+    isFavourite: false,
+  };
 }
