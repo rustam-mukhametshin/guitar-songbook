@@ -7,10 +7,22 @@
  */
 
 import { SearchPipe } from './search.pipe';
+import { Fake } from '../test/fake';
 
-xdescribe('SearchPipe', () => {
+describe('SearchPipe', () => {
+  let pipe: SearchPipe;
+
+  beforeEach(() => {
+    pipe = new SearchPipe();
+  });
+
   it('create an instance', () => {
-    const pipe = new SearchPipe();
     expect(pipe).toBeTruthy();
+  });
+
+  it('#transform should return filtered result', done => {
+    const res = pipe.transform(Fake.songs, '1');
+    expect(res).toEqual([Fake.song]);
+    done();
   });
 });
