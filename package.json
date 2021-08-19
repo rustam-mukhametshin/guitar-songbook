@@ -20,7 +20,9 @@
     "deploy:ios-local": "ionic cap open ios",
     "deploy:android-local": "ionic cap open android",
     "set:hooks": "npx simple-git-hooks",
-    "postinstall": "npm run set:hooks"
+    "postinstall": "npm run set:hooks",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run lint"
@@ -59,6 +61,7 @@
     "@angular/compiler-cli": "~12.2.0",
     "@angular/language-service": "~12.2.0",
     "@capacitor/cli": "3.1.2",
+    "@cypress/schematic": "^1.5.0",
     "@ionic/angular-toolkit": "^4.0.0",
     "@types/jasmine": "~3.8.2",
     "@types/jasminewd2": "~2.0.10",
@@ -80,7 +83,8 @@
     "protractor": "~7.0.0",
     "simple-git-hooks": "^2.5.1",
     "ts-node": "~10.1.0",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "cypress": "8.3.0"
   },
   "description": "An Ionic project"
 }
