@@ -24,6 +24,9 @@ export class SongStorageService {
   ) {
   }
 
+  /**
+   * Get all songs
+   */
   get(): Observable<Song[]> {
     return from(this.storageService.get(this.storageName))
       .pipe(
@@ -33,7 +36,7 @@ export class SongStorageService {
   }
 
   /**
-   * Save song
+   * Save songs
    *
    * @param songs
    */

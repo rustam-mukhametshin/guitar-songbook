@@ -10,7 +10,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { SongStorageService } from './song-storage.service';
 
-xdescribe('SongStorageService', () => {
+describe('SongStorageService', () => {
   let service: SongStorageService;
 
   beforeEach(() => {
@@ -20,5 +20,13 @@ xdescribe('SongStorageService', () => {
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  xit('#get should Get all songs', done => {
+    done();
+  });
+
+  xit('#set should Save songs', done => {
+    done();
   });
 });
