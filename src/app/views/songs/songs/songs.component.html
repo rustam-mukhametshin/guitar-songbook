@@ -43,6 +43,7 @@
       <ion-button
         *ngIf="!showSearch && artist$ | async as artist"
         [routerLink]="['/songs/create', artist.id]"
+        id="addSong"
         fill="clear">
         <ion-icon
           [ios]="'add-outline'"
