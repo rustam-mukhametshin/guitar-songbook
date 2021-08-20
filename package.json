@@ -23,7 +23,8 @@
     "set:hooks": "npx simple-git-hooks",
     "postinstall": "npm run set:hooks",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "cypress:run": "cypress run",
+    "cypress:g": "ng g @cypress/schematic:e2e"
   },
   "simple-git-hooks": {
     "pre-commit": "npm run lint"
