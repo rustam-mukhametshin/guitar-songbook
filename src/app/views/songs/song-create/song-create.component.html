@@ -81,7 +81,17 @@
           </ion-select>
         </ion-item>
 
-        <ion-button color="tertiary">
+        <app-lyrics-field
+          (isLyrics)="isLyrics = $event"
+          [hidden]="!isLyrics"
+          formControlName="lyrics"
+        ></app-lyrics-field>
+
+        <ion-button
+          (click)="isLyrics = !isLyrics"
+          *ngIf="!isLyrics"
+          color="tertiary"
+        >
           <ion-icon [ios]="'filter'" [md]="'filter'" slot="start"></ion-icon>
           Lyrics
         </ion-button>
