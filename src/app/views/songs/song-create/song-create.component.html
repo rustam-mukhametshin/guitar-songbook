@@ -12,8 +12,9 @@
     <ion-buttons slot="start">
       <ion-button
         [routerLink]="['/songs', artistId]"
-        fill="clear
-">
+        [disabled]="isLyrics"
+        fill="clear"
+      >
         <ion-icon
           [ios]="'arrow-back'"
           [md]="'arrow-back'"></ion-icon>
@@ -24,7 +25,7 @@
     <ion-buttons slot="secondary">
       <ion-button
         (click)="save()"
-        [disabled]="songForm.invalid"
+        [disabled]="songForm.invalid || isLyrics"
         fill="clear"
         id="save"
       >
