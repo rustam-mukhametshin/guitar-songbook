@@ -14,12 +14,14 @@ import { SongsComponent } from './songs/songs.component';
 import { SongCreateComponent } from './song-create/song-create.component';
 import { SongUpdateComponent } from './song-update/song-update.component';
 import { SongFormComponent } from './song-form/song-form.component';
+import { LyricsFieldComponent } from './lyrics-field/lyrics-field.component';
 
 const components = [
   SongsComponent,
   SongCreateComponent,
   SongUpdateComponent,
   SongFormComponent,
+  LyricsFieldComponent,
 ];
 
 @NgModule({
