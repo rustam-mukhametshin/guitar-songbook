@@ -44,7 +44,7 @@ export class SongService {
   addNewCustomSong(value: Song, artistId: number = 0): Observable<void> {
     const song: Song = {
       title: value.title,
-      body: '', // Todo,
+      lyrics: value.lyrics,
       duration: value.duration,
       initialPause: value.initialPause,
 

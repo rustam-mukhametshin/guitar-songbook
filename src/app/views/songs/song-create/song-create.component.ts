@@ -81,6 +81,7 @@ export class SongCreateComponent implements OnInit {
       title: new FormControl('', [
         Validators.required,
       ]),
+      lyrics: new FormControl(''),
       initialPause: new FormControl('', [
         Validators.pattern('[0-9]*'),
         Validators.required,
