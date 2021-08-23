@@ -28,6 +28,8 @@ export class SongCreateComponent implements OnInit {
   // List of chords
   chordNames: any;
 
+  isLyrics = false;
+
   constructor(
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
