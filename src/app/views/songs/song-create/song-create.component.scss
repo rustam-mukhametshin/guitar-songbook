@@ -6,3 +6,13 @@
  * @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
  */
 
+
+.hidden-inputs ion-item {
+  display: none;
+  visibility: hidden;
+}
+
+
+.hidden-input {
+  display: none;
+}

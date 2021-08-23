@@ -42,7 +42,7 @@
   <ion-card style="--color: black;">
     <ion-card-content>
 
-      <form [formGroup]="songForm">
+      <form [formGroup]="songForm" [ngClass]="{'hidden-inputs': isLyrics}">
 
         <ion-item>
           <ion-label position="stacked">Name</ion-label>
