@@ -5,7 +5,30 @@
   ~ @link https://github.com/iproman
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
+<!-- Nav buttons -->
+<ng-template #btn>
+  <ion-buttons slot="secondary">
+    <ion-button
+      (click)="set(textarea.value)"
+      fill="clear">
+      <ion-icon
+        [ios]="'add-outline'"
+        [md]="'add-outline'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ng-template>
 
-<p>
-  lyrics-field works!
-</p>
+<ng-container *ngTemplateOutlet="btn"></ng-container>
+
+<ion-item id="lyrics-field">
+  <ion-label position="floating">Lyrics</ion-label>
+  <ion-textarea
+    #textarea
+    [disabled]="disabled"
+    [value]="value"
+    autoGrow="true"
+    rows="5"
+  ></ion-textarea>
+</ion-item>
+
+<ng-container *ngTemplateOutlet="btn"></ng-container>
