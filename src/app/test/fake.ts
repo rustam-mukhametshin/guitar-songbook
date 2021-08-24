@@ -41,7 +41,7 @@ export class Fake {
     {
       id: 1,
       title: 'title 1',
-      body: '',
+      lyrics: '',
       comments: 'Comments 1',
       isCustom: false,
       initialPause: 111,
@@ -52,7 +52,7 @@ export class Fake {
     {
       id: 2,
       title: 'title 2',
-      body: '',
+      lyrics: '',
       comments: 'Comments 2',
       isCustom: false,
       initialPause: 222,
@@ -63,7 +63,7 @@ export class Fake {
     {
       id: 3,
       title: 'title 3',
-      body: '',
+      lyrics: '',
       comments: 'Comments 3',
       isCustom: false,
       initialPause: 333,
@@ -78,7 +78,7 @@ export class Fake {
   static song: Song = {
     id: 1,
     title: 'title 1',
-    body: '',
+    lyrics: '',
     comments: 'Comments 1',
     isCustom: false,
     initialPause: 111,
@@ -120,7 +120,7 @@ export class Fake2 {
     {
       id: 4,
       title: 'title 4',
-      body: '',
+      lyrics: '',
       comments: 'Comments 4',
       isCustom: false,
       initialPause: 444,
@@ -131,7 +131,7 @@ export class Fake2 {
     {
       id: 5,
       title: 'title 5',
-      body: '',
+      lyrics: '',
       comments: 'Comments 5',
       isCustom: false,
       initialPause: 555,
@@ -142,7 +142,7 @@ export class Fake2 {
     {
       id: 6,
       title: 'title 6',
-      body: '',
+      lyrics: '',
       comments: 'Comments 6',
       isCustom: false,
       initialPause: 666,
@@ -157,7 +157,7 @@ export class Fake2 {
   static song: Song = {
     id: 4,
     title: 'title 4',
-    body: '',
+    lyrics: '',
     comments: 'Comments 4',
     isCustom: false,
     initialPause: 444,
