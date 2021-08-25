@@ -22,7 +22,7 @@ const components = [
     ...components,
   ],
   exports: [
-    LoaderComponent
+    ...components,
   ],
   imports: [
     SharedModule,
