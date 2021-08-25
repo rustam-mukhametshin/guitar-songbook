@@ -9,11 +9,11 @@
 import { Injectable } from '@angular/core';
 import { Song } from '../interfaces/Song';
 import { v4 as uid } from 'uuid';
-import { BehaviorSubject, Observable, Subject, switchMap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { SongStorageService } from './storages/song-storage.service';
 import { ArtistStorageService } from './storages/artist-storage.service';
 import { ArtistsService } from './artists.service';
-import { take } from 'rxjs/operators';
+import { switchMap, take } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 

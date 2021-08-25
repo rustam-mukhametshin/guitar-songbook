@@ -8,10 +8,11 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ArtistsService } from '../../../services/artists.service';
-import { finalize, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Artist } from '../../../interfaces/Artist';
 import { ActivatedRoute } from '@angular/router';
 import { LoaderService } from '../../../services/common/loader.service';
+import { finalize, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-artists',

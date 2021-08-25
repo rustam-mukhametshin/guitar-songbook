@@ -11,9 +11,9 @@ import { TestBed } from '@angular/core/testing';
 import { SongService } from './song.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SongStorageService } from './storages/song-storage.service';
-import { first, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Fake } from '../test/fake';
-import { take } from 'rxjs/operators';
+import { first, take } from 'rxjs/operators';
 
 describe('SongService', () => {
   let service: SongService;

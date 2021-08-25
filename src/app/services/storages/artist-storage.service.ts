@@ -8,8 +8,8 @@
 
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
-import { from, Observable, of, switchMap } from 'rxjs';
-import { map, take } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
+import { map, switchMap, take } from 'rxjs/operators';
 import { Artist } from '../../interfaces/Artist';
 
 @Injectable({

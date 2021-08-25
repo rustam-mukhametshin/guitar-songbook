@@ -11,9 +11,10 @@ import { TestBed } from '@angular/core/testing';
 import { ArtistsService } from './artists.service';
 import { ArtistStorageService } from './storages/artist-storage.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { first, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Artist } from '../interfaces/Artist';
 import { Fake } from '../test/fake';
+import { first } from 'rxjs/operators';
 
 describe('ArtistsService', () => {
   let artistsService: ArtistsService;

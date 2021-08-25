@@ -9,8 +9,8 @@
 import { Injectable } from '@angular/core';
 import { Song } from '../../interfaces/Song';
 import { StorageService } from './storage.service';
-import { first, from, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, Observable } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'

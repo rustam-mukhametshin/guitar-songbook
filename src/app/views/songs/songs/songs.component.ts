@@ -7,13 +7,13 @@
  */
 
 import { Component, OnInit } from '@angular/core';
-import { finalize, from, Observable, tap } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { ArtistsService } from '../../../services/artists.service';
 import { ActivatedRoute } from '@angular/router';
 import { Song } from '../../../interfaces/Song';
 import { Artist } from '../../../interfaces/Artist';
 import { SongService } from '../../../services/song.service';
-import { map, switchMap, take } from 'rxjs/operators';
+import { finalize, map, switchMap, take, tap } from 'rxjs/operators';
 import { LoaderService } from '../../../services/common/loader.service';
 import { PopoverController } from '@ionic/angular';
 import { PopoverComponent } from '../../common/popover/popover.component';
