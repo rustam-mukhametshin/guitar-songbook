@@ -185,6 +185,10 @@
             "watch": true,
             "headless": false
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

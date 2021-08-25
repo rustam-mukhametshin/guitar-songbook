@@ -19,6 +19,7 @@ import { NotFoundPageComponent } from './views/not-found-page/not-found-page.com
 import { SharedModule } from './modules/shared.module';
 import { CoreModule } from './modules/core.module';
 import { CommonViewModule } from './views/common/common-view.module';
+import { FirebaseModule } from './modules/firebase.module';
 
 const components = [
   SidebarComponent,
@@ -41,6 +42,7 @@ const components = [
     AppRoutingModule,
     SharedModule,
     CommonViewModule,
+    FirebaseModule,
   ],
   bootstrap: [AppComponent],
 })
