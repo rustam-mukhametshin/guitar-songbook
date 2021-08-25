@@ -6,30 +6,20 @@
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
 
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Guitar songs</ion-title>
+<app-menu-wrapper title='Guitar songs'>
+  <ion-button
+    [routerLink]="['/artists/create']"
+    fill="clear">
+    <ion-icon
+      [ios]="'add-outline'"
+      [md]="'add-outline'"
+    ></ion-icon>
+  </ion-button>
 
-    <ion-buttons slot="secondary">
-
-      <ion-button
-        [routerLink]="['/artists/create']"
-        fill="clear">
-        <ion-icon
-          [ios]="'add-outline'"
-          [md]="'add-outline'"
-        ></ion-icon>
-      </ion-button>
-
-      <ion-button *ngFor="let p of labels" fill="clear">
-        <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+  <ion-button *ngFor="let p of labels" fill="clear">
+    <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
+  </ion-button>
+</app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
 
