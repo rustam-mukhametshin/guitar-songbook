@@ -7,18 +7,22 @@
   -->
 
 <app-menu-wrapper title='Guitar songs'>
-  <ion-button
-    [routerLink]="['/artists/create']"
-    fill="clear">
-    <ion-icon
-      [ios]="'add-outline'"
-      [md]="'add-outline'"
-    ></ion-icon>
-  </ion-button>
 
-  <ion-button *ngFor="let p of labels" fill="clear">
-    <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
-  </ion-button>
+  <ion-buttons slot="secondary">
+    <ion-button
+      [routerLink]="['/artists/create']"
+      fill="clear">
+      <ion-icon
+        [ios]="'add-outline'"
+        [md]="'add-outline'"
+      ></ion-icon>
+    </ion-button>
+
+    <ion-button *ngFor="let p of labels" fill="clear">
+      <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+
 </app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
