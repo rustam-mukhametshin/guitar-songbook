@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MenuWrapperComponent } from '../views/common/menu-wrapper/menu-wrapper.component';
 import { TranslocoRootModule } from './transloco-root.module';
+import { FirebaseModule } from './firebase.module';
 
 const pipes = [
   SearchPipe,
@@ -28,6 +29,7 @@ const modules = [
   HttpClientModule,
   ReactiveFormsModule,
   TranslocoRootModule,
+  FirebaseModule
 ];
 
 @NgModule({
