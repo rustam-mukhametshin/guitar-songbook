@@ -21,11 +21,6 @@ import { finalize, tap } from 'rxjs/operators';
 })
 export class ArtistsComponent implements OnInit {
 
-  labels = [
-    {title: 'Search', url: '/folder/Inbox', icon: 'search'},
-    {title: 'Reload', url: '/folder/Favorites', icon: 'reload'},
-    {title: 'Submenu', url: '/folder/Favorites', icon: 'ellipsis-vertical'},
-  ];
   artists$: Observable<Artist[]>;
 
   type: string;

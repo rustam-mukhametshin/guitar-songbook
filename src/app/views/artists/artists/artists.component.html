@@ -12,14 +12,19 @@
     <ion-button
       [routerLink]="['/artists/create']"
       fill="clear">
-      <ion-icon
-        [ios]="'add-outline'"
-        [md]="'add-outline'"
-      ></ion-icon>
+      <ion-icon ios="add-outline" md="add-outline"></ion-icon>
     </ion-button>
 
-    <ion-button *ngFor="let p of labels" fill="clear">
-      <ion-icon [ios]="p.icon + '-outline'" [md]="p.icon + '-outline'"></ion-icon>
+    <ion-button fill="clear">
+      <ion-icon ios="search-outline" md="search-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button fill="clear">
+      <ion-icon ios="reload-outline" md="reload-outline"></ion-icon>
+    </ion-button>
+
+    <ion-button fill="clear">
+      <ion-icon ios="ellipsis-vertical-outline" md="ellipsis-vertical-outline"></ion-icon>
     </ion-button>
   </ion-buttons>
 
