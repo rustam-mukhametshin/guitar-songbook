@@ -12,7 +12,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './views/common/app/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './views/layout/sidebar/sidebar.component';
-import { NavComponent } from './views/layout/nav/nav.component';
 import { ArtistsComponent } from './views/artists/artists/artists.component';
 import { SongComponent } from './views/song/song.component';
 import { NotFoundPageComponent } from './views/not-found-page/not-found-page.component';
@@ -23,7 +22,6 @@ import { FirebaseModule } from './modules/firebase.module';
 
 const components = [
   SidebarComponent,
-  NavComponent,
   ArtistsComponent,
   SongComponent,
   NotFoundPageComponent,
