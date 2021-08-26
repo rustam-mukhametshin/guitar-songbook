@@ -83,18 +83,21 @@ describe('ArtistsService', () => {
       .pipe(first())
       .subscribe(a => {
         expect(a).toEqual(Fake.artists);
+        done();
       });
 
     artistsService.getAll('custom')
       .pipe(first())
       .subscribe(a => {
         expect(a).toEqual(Fake2.artists);
+        done();
       });
 
     artistsService.getAll()
       .pipe(first())
       .subscribe(a => {
         expect(a).toEqual(Fake.artists);
+        done();
       });
   });
 
