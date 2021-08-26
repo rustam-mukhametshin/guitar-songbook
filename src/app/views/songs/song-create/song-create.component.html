@@ -5,39 +5,35 @@
   ~ @link https://github.com/iproman
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
+<app-menu-wrapper>
+  <!-- Menu -->
+  <ion-buttons slot="start">
+    <ion-button
+      [disabled]="isLyrics"
+      [routerLink]="['/songs', artistId]"
+      fill="clear"
+    >
+      <ion-icon
+        [ios]="'arrow-back'"
+        [md]="'arrow-back'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- Menu -->
-    <ion-buttons slot="start">
-      <ion-button
-        [routerLink]="['/songs', artistId]"
-        [disabled]="isLyrics"
-        fill="clear"
-      >
-        <ion-icon
-          [ios]="'arrow-back'"
-          [md]="'arrow-back'"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+  <!-- Nav buttons -->
+  <ion-buttons slot="secondary">
+    <ion-button
+      (click)="save()"
+      [disabled]="songForm.invalid || isLyrics"
+      fill="clear"
+      id="save"
+    >
+      <ion-icon
+        [ios]="'save'"
+        [md]="'save'"></ion-icon>
+    </ion-button>
 
-    <!-- Nav buttons -->
-    <ion-buttons slot="secondary">
-      <ion-button
-        (click)="save()"
-        [disabled]="songForm.invalid || isLyrics"
-        fill="clear"
-        id="save"
-      >
-        <ion-icon
-          [ios]="'save'"
-          [md]="'save'"></ion-icon>
-      </ion-button>
-
-    </ion-buttons>
-
-  </ion-toolbar>
-</ion-header>
+  </ion-buttons>
+</app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
   <ion-card style="--color: black;">
