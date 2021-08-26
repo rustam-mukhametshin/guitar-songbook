@@ -12,9 +12,14 @@ import { SearchPipe } from '../pipes/search.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { MenuWrapperComponent } from '../views/common/menu-wrapper/menu-wrapper.component';
 
 const pipes = [
   SearchPipe,
+];
+
+const components = [
+  MenuWrapperComponent,
 ];
 
 const modules = [
@@ -26,6 +31,7 @@ const modules = [
 @NgModule({
   declarations: [
     ...pipes,
+    ...components,
   ],
   imports: [
     ...modules,
@@ -34,6 +40,7 @@ const modules = [
   exports: [
     ...modules,
     ...pipes,
+    ...components,
     IonicModule,
   ]
 })
