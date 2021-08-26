@@ -13,17 +13,19 @@ import { ArtistStorageService } from './storages/artist-storage.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { of } from 'rxjs';
 import { Artist } from '../interfaces/Artist';
-import { Fake } from '../test/fake';
+import { Fake, Fake2 } from '../test/fake';
 import { first } from 'rxjs/operators';
+import SpyObj = jasmine.SpyObj;
 
 describe('ArtistsService', () => {
   let artistsService: ArtistsService;
   const artistsServiceSpy = jasmine.createSpyObj(ArtistsService, [
     'getArtists',
+    'getAll',
     'getArtist',
     'getCustoms',
     'setArtist'
-  ]);
+  ]) as SpyObj<ArtistsService>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -44,6 +46,19 @@ describe('ArtistsService', () => {
 
   beforeEach(() => {
     artistsServiceSpy.getArtists.and.returnValue(of(Fake.artists));
+
+    artistsServiceSpy.getAll.and.callFake((type: string) => {
+      switch (type) {
+        case 'favourite':
+          // Todo: in work
+          return of(Fake.artists);
+        case 'custom':
+          // Todo: return from storage
+          return of(Fake2.artists);
+        default:
+          return of(Fake.artists);
+      }
+    });
     artistsServiceSpy.getArtist.and.callFake((arg: string | number) => of(Fake.artists[arg]));
     artistsServiceSpy.getCustoms.and.returnValue(of(Fake.artists));
     // TODO: Check saving and returning from storage
@@ -60,6 +75,26 @@ describe('ArtistsService', () => {
       .subscribe(c => {
         expect(c).toEqual(Fake.artists);
         done();
+      });
+  });
+
+  it('#getAll should return artists by type', done => {
+    artistsService.getAll('favourite')
+      .pipe(first())
+      .subscribe(a => {
+        expect(a).toEqual(Fake.artists);
+      });
+
+    artistsService.getAll('custom')
+      .pipe(first())
+      .subscribe(a => {
+        expect(a).toEqual(Fake2.artists);
+      });
+
+    artistsService.getAll()
+      .pipe(first())
+      .subscribe(a => {
+        expect(a).toEqual(Fake.artists);
       });
   });
 

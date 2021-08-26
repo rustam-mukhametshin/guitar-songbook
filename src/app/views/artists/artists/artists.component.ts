@@ -33,22 +33,6 @@ export class ArtistsComponent implements OnInit {
     this.type = this.activatedRoute.snapshot.queryParamMap.get('type');
   }
 
-  /**
-   * Get list of artist base on type
-   *
-   * @private
-   */
-  private get list(): Observable<Artist[]> {
-    switch (this.type) {
-      case 'favourite':
-        return this.artistsService.getArtists();
-      case 'custom':
-        return this.artistsService.getCustoms();
-      default:
-        return this.artistsService.getArtists();
-    }
-  }
-
   ngOnInit() {
     this.initList();
   }
@@ -57,7 +41,7 @@ export class ArtistsComponent implements OnInit {
    * @private
    */
   private initList() {
-    this.artists$ = this.list
+    this.artists$ = this.artistsService.getAll(this.type)
       .pipe(
         tap(_ => {
           this.loaderService.show();

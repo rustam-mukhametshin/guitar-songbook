@@ -34,6 +34,23 @@ export class ArtistsService {
     return this.httpClient.get<Artist[]>(this.apiUrl + '/users/');
   }
 
+
+  /**
+   * Get artists list by type
+   *
+   * @param type
+   */
+  getAll(type: string = ''): Observable<Artist[]> {
+    switch (type) {
+      case 'favourite':
+        return this.getArtists();
+      case 'custom':
+        return this.getCustoms();
+      default:
+        return this.getArtists();
+    }
+  }
+
   /**
    * Get single artist from API
    *
