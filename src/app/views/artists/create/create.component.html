@@ -5,35 +5,31 @@
   ~ @link https://github.com/iproman
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
-
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- Menu -->
-    <ion-buttons slot="start">
-      <ion-button
-        [routerLink]="['/artists']"
-        fill="clear
+<app-menu-wrapper>
+  <!-- Menu -->
+  <ion-buttons slot="start">
+    <ion-button
+      [routerLink]="['/artists']"
+      fill="clear
 ">
-        <ion-icon
-          [ios]="'arrow-back'"
-          [md]="'arrow-back'"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+      <ion-icon
+        [ios]="'arrow-back'"
+        [md]="'arrow-back'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 
-    <!-- Nav buttons -->
-    <ion-buttons slot="secondary">
-      <ion-button
-        (click)="save()"
-        fill="clear">
-        <ion-icon
-          [ios]="'save'"
-          [md]="'save'"></ion-icon>
-      </ion-button>
+  <!-- Nav buttons -->
+  <ion-buttons slot="secondary">
+    <ion-button
+      (click)="save()"
+      fill="clear">
+      <ion-icon
+        [ios]="'save'"
+        [md]="'save'"></ion-icon>
+    </ion-button>
 
-    </ion-buttons>
-
-  </ion-toolbar>
-</ion-header>
+  </ion-buttons>
+</app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
   <ion-card style="--color: black;">
