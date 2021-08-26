@@ -1,40 +1,43 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title *ngIf="song$ | async as song">{{ song.title }}</ion-title>
-    <ion-buttons slot="secondary">
-      <ion-button>
-        <ion-icon
-          [ios]="'swap-vertical-outline'"
-          [md]="'swap-vertical-outline'"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon
-          [ios]="'play-outline'"
-          [md]="'play-outline'"></ion-icon>
-      </ion-button>
-      <ion-button>
-        <ion-icon
-          [ios]="'pause-outline'"
-          [md]="'pause-outline'"></ion-icon>
-      </ion-button>
+<!--
+  ~ Guitar songbook project
+  ~
+  ~ @author Rustam Mukhametshin <https://github.com/iproman>
+  ~ @link https://github.com/iproman
+  ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
+  -->
 
-      <ion-button>
-        <ion-icon
-          [ios]="'reload-outline'"
-          [md]="'reload-outline'"></ion-icon>
-      </ion-button>
+<app-menu-wrapper>
+  <ion-title *ngIf="song$ | async as song">{{ song.title }}</ion-title>
+  <ion-buttons slot="secondary">
+    <ion-button>
+      <ion-icon
+        [ios]="'swap-vertical-outline'"
+        [md]="'swap-vertical-outline'"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon
+        [ios]="'play-outline'"
+        [md]="'play-outline'"></ion-icon>
+    </ion-button>
+    <ion-button>
+      <ion-icon
+        [ios]="'pause-outline'"
+        [md]="'pause-outline'"></ion-icon>
+    </ion-button>
 
-      <ion-button>
-        <ion-icon
-          [ios]="'ellipsis-vertical-outline'"
-          [md]="'ellipsis-vertical-outline'"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+    <ion-button>
+      <ion-icon
+        [ios]="'reload-outline'"
+        [md]="'reload-outline'"></ion-icon>
+    </ion-button>
+
+    <ion-button>
+      <ion-icon
+        [ios]="'ellipsis-vertical-outline'"
+        [md]="'ellipsis-vertical-outline'"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
   <ion-card style="--color: black;">
