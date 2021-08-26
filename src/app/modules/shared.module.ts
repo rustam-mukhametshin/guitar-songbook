@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MenuWrapperComponent } from '../views/common/menu-wrapper/menu-wrapper.component';
+import { TranslocoRootModule } from './transloco-root.module';
 
 const pipes = [
   SearchPipe,
@@ -26,6 +27,7 @@ const modules = [
   CommonModule,
   HttpClientModule,
   ReactiveFormsModule,
+  TranslocoRootModule,
 ];
 
 @NgModule({
