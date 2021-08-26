@@ -5,64 +5,55 @@
   ~ @link https://github.com/iproman
   ~ @copyright Copyright (c) Rustam Mukhametshin, LLC, 2021
   -->
+<app-menu-wrapper>
+  <ion-title *ngIf="!showSearch && artist$ | async as artist">{{artist.name}}</ion-title>
 
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <!-- Menu -->
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-
-    <ion-title *ngIf="!showSearch && artist$ | async as artist">{{artist.name}}</ion-title>
-
-    <!-- Search -->
-    <ion-toolbar *ngIf="showSearch">
-      <ion-searchbar
-        (ionCancel)="showSearch = false"
-        (ionChange)="searchText = $event.detail.value"
-        animated="true"
-        cancelButtonIcon="chevron-back-outline"
-        debounce="200"
-        show-cancel-button="true"
-      ></ion-searchbar>
-    </ion-toolbar>
-
-    <!-- Nav buttons -->
-    <ion-buttons slot="secondary">
-
-      <ion-button
-        (click)="showSearch = true;"
-        *ngIf="!showSearch"
-        fill="clear">
-        <ion-icon
-          [ios]="'search-outline'"
-          [md]="'search-outline'"
-        ></ion-icon>
-      </ion-button>
-
-      <ion-button
-        *ngIf="!showSearch && artist$ | async as artist"
-        [routerLink]="['/songs/create', artist.id]"
-        id="addSong"
-        fill="clear">
-        <ion-icon
-          [ios]="'add-outline'"
-          [md]="'add-outline'"
-        ></ion-icon>
-      </ion-button>
-
-      <ion-button (click)="showInfoMenu($event)"
-                  fill="clear"
-      >
-        <ion-icon
-          [ios]="'ellipsis-vertical-outline'"
-          [md]="'ellipsis-vertical-outline'"></ion-icon>
-      </ion-button>
-
-    </ion-buttons>
-
+  <!-- Search -->
+  <ion-toolbar *ngIf="showSearch">
+    <ion-searchbar
+      (ionCancel)="showSearch = false"
+      (ionChange)="searchText = $event.detail.value"
+      animated="true"
+      cancelButtonIcon="chevron-back-outline"
+      debounce="200"
+      show-cancel-button="true"
+    ></ion-searchbar>
   </ion-toolbar>
-</ion-header>
+
+  <!-- Nav buttons -->
+  <ion-buttons slot="secondary">
+
+    <ion-button
+      (click)="showSearch = true;"
+      *ngIf="!showSearch"
+      fill="clear">
+      <ion-icon
+        [ios]="'search-outline'"
+        [md]="'search-outline'"
+      ></ion-icon>
+    </ion-button>
+
+    <ion-button
+      *ngIf="!showSearch && artist$ | async as artist"
+      [routerLink]="['/songs/create', artist.id]"
+      fill="clear"
+      id="addSong">
+      <ion-icon
+        [ios]="'add-outline'"
+        [md]="'add-outline'"
+      ></ion-icon>
+    </ion-button>
+
+    <ion-button (click)="showInfoMenu($event)"
+                fill="clear"
+    >
+      <ion-icon
+        [ios]="'ellipsis-vertical-outline'"
+        [md]="'ellipsis-vertical-outline'"></ion-icon>
+    </ion-button>
+
+  </ion-buttons>
+</app-menu-wrapper>
 
 <ion-content [fullscreen]="true">
 
